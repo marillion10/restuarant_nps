@@ -7,7 +7,7 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = window.Popper = require('@popperjs/core');
+    window.Popper = require('@popperjs/core');
         window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
