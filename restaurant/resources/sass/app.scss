@@ -6,3 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// App styles
+@import 'restaurants';
+
+body  {
+    background-color:$white;
+
+}
