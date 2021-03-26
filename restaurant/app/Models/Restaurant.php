@@ -24,7 +24,7 @@ class Restaurant extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function author() {
+	public function admin() {
 		return $this->belongsTo(User::class);
 	}
 }

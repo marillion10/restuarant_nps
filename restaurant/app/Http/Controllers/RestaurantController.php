@@ -77,7 +77,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to edit this article.');
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this article.');
 
 		return view('restaurants/edit', ['restaurant' => $restaurant]);
     }
@@ -91,7 +91,7 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to edit this article.');
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this article.');
 
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a title for the restaurant.');
@@ -115,7 +115,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to delete this restaurant.');
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to delete this restaurant.');
 
 		$restaurant->delete();
 

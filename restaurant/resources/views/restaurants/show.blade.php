@@ -23,9 +23,9 @@
 				<p>{{ str_replace('\n', '<br>', $restaurant->description) }}</p>
 			</div>
 
-			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles author -->
+			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->author->id)
+				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
 					<div class="actions">
 						<a href="{{ route('restaurants.create') }}" class="btn btn-dark">Create new restaurant</a>
 						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-success">Edit restaurant</a>
