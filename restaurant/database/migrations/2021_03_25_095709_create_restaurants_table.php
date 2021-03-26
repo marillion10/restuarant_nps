@@ -19,6 +19,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('description');
             $table->string('address');
             $table->string('city');
+            $table->bigInteger('author_id')->unsigned();
             $table->timestamps();
         });
     }

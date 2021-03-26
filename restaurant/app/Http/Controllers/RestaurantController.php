@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class RestaurantController extends Controller
 {
@@ -26,7 +28,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
+
+		return view('restaurants/create');
     }
 
     /**
@@ -37,7 +41,20 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
+
+		if (!$request->filled('name')) {
+			return redirect()->back()->with('warning', 'Please enter a name for the restaurant.');
+		}
+
+		$restaurant = Auth::user()->restaurants()->create([
+			'name' => $request->input('name'),
+			'address' => $request->input('address'),
+			'city' => $request->input('city'),
+			'description' => $request->input('description'),
+		]);
+
+		return redirect()->route('restaurants.show', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -48,7 +65,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurants/show', ['restaurant' => $restaurant]);
+
     }
 
     /**
@@ -59,7 +77,9 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to edit this article.');
+
+		return view('restaurants/edit', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -71,7 +91,20 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to edit this article.');
+
+		if (!$request->filled('name')) {
+			return redirect()->back()->with('warning', 'Please enter a title for the restaurant.');
+		}
+
+		$restaurant->update([
+			'name' => $request->input('name'),
+			'address' => $request->input('address'),
+			'city' => $request->input('city'),
+			'description' => $request->input('description'),
+		]);
+
+		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])->with('success', 'restaurant updated.');
     }
 
     /**
@@ -82,6 +115,10 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->author->id, 401, 'You have to be logged in as the author to delete this restaurant.');
+
+		$restaurant->delete();
+
+		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');
     }
 }

@@ -25,5 +25,23 @@ class AdminSeeder extends Seeder
         ]);
         }
 
+        if (User::where('email', 'nikola.tomasovic@medieinstitutet.se')->doesntExist()) {
+
+            User::create( [
+        // Create initial user
+                'name' => 'Nikola Tomasovic',
+                'email' => 'nikola.tomasovic@medieinstitutet.se',
+                'password' => Hash::make('password2'),
+        ]);
+        }
+        if (User::where('email', 'shakir.salman@medieinstitutet.se')->doesntExist()) {
+
+            User::create( [
+        // Create initial user
+                'name' => 'Shakir Salman',
+                'email' => 'shakir.salman@medieinstitutet.se',
+                'password' => Hash::make('password3'),
+        ]);
+        }
     }
 }

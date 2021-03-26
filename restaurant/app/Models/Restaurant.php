@@ -14,9 +14,9 @@ class Restaurant extends Model
 	 */
 	protected $fillable = [
 		'name',
-		'description',
 		'address',
 		'city',
+        'description',
 	];
 
 	/**
@@ -24,7 +24,7 @@ class Restaurant extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function county() {
+	public function author() {
 		return $this->belongsTo(User::class);
 	}
 }
