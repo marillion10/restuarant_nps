@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('restaurants.index')}}">Restaurants</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cities.index')}}">Cities</a>
+                </li>
 			</ul>
 
 			<!-- Right Side Of Navbar -->

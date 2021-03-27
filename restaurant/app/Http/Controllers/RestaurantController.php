@@ -77,7 +77,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this article.');
+        abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this restaurant.');
 
 		return view('restaurants/edit', ['restaurant' => $restaurant]);
     }
