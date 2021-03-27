@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/restaurants', RestaurantController::class);
-Route::resource('/countys', CountyController::class);
+Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
 Route::resource('/categories', CategoryController::class);
 

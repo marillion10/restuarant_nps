@@ -5,9 +5,9 @@
 
 	<div class="card">
 		<div class="card-body">
-			<h5 class="card-title">Edit restaurant</h5>
+			<h5 class="card-title">Edit county</h5>
 
-			<form class="form" action="{{ route('countys.update', ['county' => $county]) }}" method="POST">
+			<form class="form" action="{{ route('counties.update', ['county' => $county]) }}" method="POST">
 				@csrf
 				@method('PUT')
 
@@ -22,6 +22,6 @@
 	</div>
 
 	<div class="mt-4">
-		<a href="{{ route('countys.show', ['county' => $county]) }}" class="btn btn-secondary">&laquo; Back to countys</a>
+		<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-secondary">&laquo; Back to countys</a>
 	</div>
 @endsection

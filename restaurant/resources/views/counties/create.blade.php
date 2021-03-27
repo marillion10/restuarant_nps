@@ -7,7 +7,7 @@
 		<div class="card-body">
 			<h5 class="card-title">New county</h5>
 
-			<form class="form" action="{{ route('countys.store') }}" method="POST">
+			<form class="form" action="{{ route('counties.store') }}" method="POST">
 				@csrf
 
 				<div class="mb-3">
