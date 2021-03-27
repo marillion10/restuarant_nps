@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['register' => false]);
+
 Route::get('/', function () {
-    return redirect('/');
+    return redirect()->route('restaurants.index');
 });
 
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/restaurants', RestaurantController::class);
+Route::resource('/cities', CityController::class);
+
+Route::middleware(['auth'])->group(function() {
+});
+
+Route::get('/auth-test', function() {
+	dd([
+		'Is user logged in?' => Auth::check(),
+		'Is user guest?' => Auth::guest(),
+		'ID of logged in user?' => Auth::id(),
+		'Logged in User' => Auth::user(),
+	]);
+});

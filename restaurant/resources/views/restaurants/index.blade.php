@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-light">Restaurants</h1>
+	<h1 class="text-dark">Restaurants</h1>
 
 	@foreach($restaurants as $restaurant)
 		<article class="card">
@@ -10,7 +10,7 @@
 				<div class="metadata">
 					<ul class="list-inline">
 						<li class="list-inline-item">Date: {{ $restaurant->created_at }}</li>
-						<li class="list-inline-item">Author: {{ $restaurant->name }}</li>
+						<li class="list-inline-item">Name: {{ $restaurant->name }}</li>
 					</ul>
 				</div>
 
@@ -23,7 +23,7 @@
 					@endif
 				</p>
 
-				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-primary">Read more &raquo;</a>
+				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-success">Read more &raquo;</a>
 			</div>
 		</article>
 	@endforeach
