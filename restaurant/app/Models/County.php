@@ -17,11 +17,11 @@ class County extends Model
 	];
 
 	/**
-	 * 
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function restaurants() {
-		return $this->hasmany(Restaurant::class);
+    public function admin() {
+		return $this->belongsTo(User::class);
 	}
-}
+	}

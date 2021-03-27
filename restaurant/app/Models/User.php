@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function restaurants() {
 		return $this->hasMany(Restaurant::class, 'admin_id');
 	}
+
+    public function countys() {
+		return $this->hasMany(County::class, 'admin_id');
+	}
 }

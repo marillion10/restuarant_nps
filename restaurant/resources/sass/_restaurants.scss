@@ -1,1 +1,26 @@
-    margin-bottom: 1rem;
+/**
+ * Article styles
+ */
+
+ article {
+	margin-bottom: 1rem;
+
+	&.single-article {
+		.excerpt {
+			font-style: italic;
+			font-weight: 600;
+		}
+	}
+
+	.actions {
+		display: flex;
+
+		> * {
+			margin-right: 1rem;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}

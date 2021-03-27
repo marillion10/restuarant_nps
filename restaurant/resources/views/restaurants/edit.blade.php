@@ -13,7 +13,7 @@
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Name</label>
-					<input type="name" id="name" name="name" class="form-control" placeholder="Enter the title of your article" value="{{ $restaurant->name }}" required>
+					<input type="name" id="name" name="name" class="form-control" placeholder="Enter the name of your restaurant" value="{{ $restaurant->name }}" required>
 				</div>
 
 				<div class="mb-3">
