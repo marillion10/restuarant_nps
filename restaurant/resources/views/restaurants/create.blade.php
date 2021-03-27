@@ -12,7 +12,7 @@
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Name</label>
-					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the title of your article" required>
+					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the name of your restaurant" required>
 				</div>
 
 				<div class="mb-3">

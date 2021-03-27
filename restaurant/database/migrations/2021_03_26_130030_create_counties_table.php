@@ -16,7 +16,7 @@ class CreateCountiesTable extends Migration
         Schema::create('counties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('restaurant_id')->unsigned();
+            $table->bigInteger('admin_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@
 
 	@auth
 		<div class="mt-4">
-			<a href="/restaurants/create" class="btn btn-dark">Create a new Restaurant</a>
+			<a href="/restaurants/create" class="btn btn-dark">Create a new restaurant</a>
 		</div>
 	@endauth
 @endsection

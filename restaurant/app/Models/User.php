@@ -47,4 +47,8 @@ class User extends Authenticatable
         public function cities() {
 		return $this->hasMany(city::class, 'admin_id');
 	}
+    public function countys() {
+		return $this->hasMany(County::class, 'admin_id');
+
+	}
 }
