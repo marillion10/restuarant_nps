@@ -15,8 +15,6 @@
 			<div class="excerpt">
 
 					<p>{{ $restaurant->address }}</p>
-					<p>{{ $restaurant->city }}</p>
-
 			</div>
 
 			<div class="content">

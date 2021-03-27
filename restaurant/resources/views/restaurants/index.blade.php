@@ -14,15 +14,6 @@
 					</ul>
 				</div>
 
-				<p class="excerpt">
-					@if(empty($restaurant->description))
-						{{ substr($restaurant->address, 0, 100) }}...
-						{{ substr($restaurant->city, 0, 100) }}...
-					@else
-						{{ $restaurant->excerpt }}
-					@endif
-				</p>
-
 				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-success">Read more &raquo;</a>
 			</div>
 		</article>

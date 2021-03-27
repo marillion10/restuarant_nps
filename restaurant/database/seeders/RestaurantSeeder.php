@@ -22,7 +22,6 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Boulebar',
                 'description' => 'Mitt på Drottningtorget i Malmö, i det gamla ridhuset från 1800-talet.',
                 'address' => 'Drottningtorget 8',
-                'city' => 'Malmö',
                 'admin_id' => '1',
 
         ]);
@@ -35,7 +34,6 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Stockholms vinkällare',
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' Döbelnsgatan 8',
-                'city' => 'Stockholm',
                 'admin_id' => '1',
         ]);
         }
