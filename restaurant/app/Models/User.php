@@ -45,10 +45,14 @@ class User extends Authenticatable
 		return $this->hasMany(Restaurant::class, 'admin_id');
 	}
         public function cities() {
-		return $this->hasMany(city::class, 'admin_id');
+		return $this->hasMany(City::class, 'admin_id');
 	}
-    public function countys() {
+    public function counties() {
 		return $this->hasMany(County::class, 'admin_id');
+
+	}
+    public function categories() {
+		return $this->hasMany(Category::class, 'admin_id');
 
 	}
 }

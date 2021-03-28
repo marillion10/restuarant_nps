@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountyController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,9 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/restaurants', RestaurantController::class);
-Route::resource('/countys', CountyController::class);
+Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
+Route::resource('/categories', CategoryController::class);
 
 Route::middleware(['auth'])->group(function() {
 });
