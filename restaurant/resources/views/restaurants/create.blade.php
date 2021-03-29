@@ -9,7 +9,7 @@
 
 			<form class="form" action="{{ route('restaurants.store') }}" method="POST">
 				@csrf
-
+                <input type="hidden" name="county_id" value="<?php echo $_GET['county_id'];?>">
 				<div class="mb-3">
 					<label for="name" class="form-label">Name</label>
 					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the name of your restaurant" required>
@@ -18,11 +18,6 @@
 				<div class="mb-3">
 					<label for="address" class="form-label">Address</label>
 					<textarea id="address" name="address" class="form-control"></textarea>
-				</div>
-
-                <div class="mb-3">
-					<label for="city" class="form-label">city</label>
-					<textarea id="city" name="city" class="form-control"></textarea>
 				</div>
 
 				<div class="mb-3">

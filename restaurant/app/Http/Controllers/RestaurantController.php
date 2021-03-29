@@ -50,7 +50,7 @@ class RestaurantController extends Controller
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city' => $request->input('city'),
+			'county_id' => $request->input('county_id'),
 			'description' => $request->input('description'),
 		]);
 
@@ -100,7 +100,7 @@ class RestaurantController extends Controller
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city' => $request->input('city'),
+			'county_id' => $request->input('county_id'),
 			'description' => $request->input('description'),
 		]);
 

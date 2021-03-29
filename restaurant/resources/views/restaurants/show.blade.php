@@ -25,7 +25,7 @@
 			@auth
 				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
 					<div class="actions">
-						<a href="{{ route('restaurants.create') }}" class="btn btn-dark">Create new restaurant</a>
+
 						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-success">Edit restaurant</a>
 
 						<form action="{{ route('restaurants.destroy', ['restaurant' => $restaurant]) }}" method="POST">

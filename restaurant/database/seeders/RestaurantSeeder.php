@@ -19,15 +19,28 @@ class RestaurantSeeder extends Seeder
 
             Restaurant::create( [
         // Create initial user
-                'name' => 'Boulebar',
+                'name' => 'Skåne Boulebar',
                 'description' => 'Mitt på Drottningtorget i Malmö, i det gamla ridhuset från 1800-talet.',
                 'address' => 'Drottningtorget 8',
                 'admin_id' => '1',
+                'county_id' => '1',
 
         ]);
         }
 
-        if (Restaurant::where('name', 'Stockholms vinkällare')->doesntExist()) {
+        if (Restaurant::where('name', 'Västra Götalands  restuarant')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Västra Götalands restuarant',
+                'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
+                'address' => ' mjölgatan 2',
+                'admin_id' => '1',
+                'county_id' => '2',
+        ]);
+        }
+
+         if (Restaurant::where('name', 'Stockholms vinkällare')->doesntExist()) {
 
             Restaurant::create( [
         // Create initial user
@@ -35,6 +48,7 @@ class RestaurantSeeder extends Seeder
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' Döbelnsgatan 8',
                 'admin_id' => '1',
+                'county_id' => '3',
         ]);
         }
 
