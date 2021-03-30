@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 Route::get('/', function () {
-    return redirect()->route('restaurants.index');
+    return redirect()->route('counties.index');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
