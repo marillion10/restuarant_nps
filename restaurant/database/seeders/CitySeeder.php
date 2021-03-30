@@ -19,7 +19,7 @@ class CitySeeder extends Seeder
             City::create( [
         // Create initial user
                 'name' => 'Malmö',
-                'admin_id' => '1',
+                'admin_id' => '3',
 
         ]);
         }
@@ -29,7 +29,7 @@ class CitySeeder extends Seeder
             City::create( [
         // Create initial user
                 'name' => 'Göteborg',
-                'admin_id' => '1',
+                'admin_id' => '3',
 
         ]);
         }
@@ -39,7 +39,7 @@ class CitySeeder extends Seeder
             City::create( [
         // Create initial user
                 'name' => 'Stockholm',
-                'admin_id' => '1',
+                'admin_id' => '3',
         ]);
         }
     }

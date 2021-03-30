@@ -17,11 +17,15 @@ class City extends Model
 	];
 
 	/**
-	 * Get the User that this Article is written by.
+	 * Get all restaurants for this city.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function admin() {
 		return $this->belongsTo(User::class);
+	}
+    public function restaurants() {
+		return $this->hasMany(Restaurant::class);
 	}
 }

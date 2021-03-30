@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,32 +15,36 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(City $city)
     {
         return view('restaurants/index', [
-			'restaurants' => Restaurant::all(),
+			'restaurants' => $city->restaurant,
 		]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * GET `/projects/{city}/restaurants`
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+    public function create(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-		return view('restaurants/create');
+		return view('restaurants/create', ['city'=>$city]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * POST `/cities/{city}/restaurants`
+	 *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
@@ -50,11 +55,13 @@ class RestaurantController extends Controller
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'county_id' => $request->input('county_id'),
+			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant]);
+        		// redirect user to `/cities/{city}`
+		return redirect("/cities/{$city->id}")
+        ->with("success", "Todo successfully created with ID {$restaurant->id}.");
     }
 
     /**
@@ -63,33 +70,36 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(City $city,Restaurant $restaurant)
     {
-        return view('restaurants/show', ['restaurant' => $restaurant]);
-
+		return view('restaurants/show', ['city' => $city, 'restaurant' => $restaurant]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * GET `/cities/{city}/restaurants/{restaurant}/edit`
+     *
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(City $city ,Restaurant $restaurant)
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this restaurant.');
 
-		return view('restaurants/edit', ['restaurant' => $restaurant]);
-    }
+		return view('restaurants/edit', ['city' => $city, 'restaurant' => $restaurant]);
+        }
 
     /**
      * Update the specified resource in storage.
+     *
+     * PUT `/cities/{city}/restaurants/{restaurant}`
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request, City $city, Restaurant $restaurant)
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this article.');
 
@@ -100,25 +110,31 @@ class RestaurantController extends Controller
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'county_id' => $request->input('county_id'),
+			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])->with('success', 'restaurant updated.');
+        // redirect user to `/cities/{city}`
+        return redirect("/cities/{$city->id}")
+        ->with("success", "Todo with ID {$restaurant->id} successfully updated.");
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * DELETE `/cities/{city}/restaurants/{restaurant}`
+     *
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy(City $city, Restaurant $restaurant)
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to delete this restaurant.');
 
 		$restaurant->delete();
 
-		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');
+        return view('restaurants/index', [
+			'restaurants' => $city->restaurant,
+		]);
     }
 }

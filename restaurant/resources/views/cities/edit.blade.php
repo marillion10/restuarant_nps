@@ -1,27 +1,22 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-dark">Edit a city</h1>
+	<h1>Edit City</h1>
+	<h2 class="mb-3">{{ $city->name }}</h2>
 
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title">Edit city</h5>
+	<form class="form" action="/cities/{{ $city->id }}" method="POST">
+		@csrf
+		@method('PUT')
 
-			<form class="form" action="{{ route('cities.update', ['city' => $city]) }}" method="POST">
-				@csrf
-				@method('PUT')
-
-				<div class="mb-3">
-					<label for="name" class="form-label">Name</label>
-					<input type="name" id="name" name="name" class="form-control" placeholder="Enter the title of your city" value="{{ $city->name }}" required>
-				</div>
-
-				<button type="submit" class="btn btn-success w-100">Update</button>
-			</form>
+		<div class="mb-3">
+			<label for="name" class="form-label">Name of City</label>
+			<input type="text" id="name" name="name" class="form-control" placeholder="Enter name of city" required value="{{ $city->name }}">
 		</div>
-	</div>
 
-	<div class="mt-4">
-		<a href="{{ route('cities.show', ['city' => $city]) }}" class="btn btn-secondary">&laquo; Back to city</a>
+		<button type="submit" class="btn btn-success w-100">Update</button>
+	</form>
+
+	<div class="mt-5">
+		<a href="/cities" class="btn btn-secondary">&laquo; Back</a>
 	</div>
 @endsection

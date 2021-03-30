@@ -1,46 +1,36 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-dark">Restaurant</h1>
+	<h1 class="mb-3">{{ $restaurant->name }}</h1>
 
-	<article class="card single-article">
-		<div class="card-body">
-			<h5 class="card-title">{{ $restaurant->name }}</h5>
-			<div class="metadata">
-				<ul class="list-inline">
-					<li class="list-inline-item">Date: {{ $restaurant->created_at }}</li>
-				</ul>
-			</div>
+	<div class="meta mb-3">
+		<dl class="row">
+			<dt class="col-sm-2">city</dt>
+			<dd class="col-sm-10">
+				<a href="/citys/{{ $restaurant->city->id }}">
+					{{ $restaurant->city->name }}
+				</a>
+			</dd>
 
-			<div class="excerpt">
+			<dt class="col-sm-2">Created at</dt>
+			<dd class="col-sm-10">
+				{{ $restaurant->created_at }}
+			</dd>
 
-					<p>{{ $restaurant->address }}</p>
-			</div>
+			<dt class="col-sm-2">Last updated at</dt>
+			<dd class="col-sm-10">
+				{{ $restaurant->updated_at }}
+			</dd>
 
-			<div class="content">
-				<p>{{ str_replace('\n', '<br>', $restaurant->description) }}</p>
-			</div>
+		</dl>
+	</div>
 
-			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
-			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
-					<div class="actions">
+	@if($restaurant->description)
+		<h2 class="h5">Description</h2>
+		<p>{{ $restaurant->description }}</p>
+	@endif
 
-						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-success">Edit restaurant</a>
-
-						<form action="{{ route('restaurants.destroy', ['restaurant' => $restaurant]) }}" method="POST">
-							@csrf
-							@method('DELETE')
-
-							<button type="submit" class="btn btn-danger">Delete restaurant</button>
-						</form>
-					</div>
-				@endif
-			@endauth
-		</div>
-	</article>
-
-	<div class="mt-4">
-		<a href="{{ route('restaurants.index') }}" class="btn btn-dark">Back to restaurants</a>
+	<div class="mt-5">
+		<a href="/cities/{{ $restaurant->city->id }}" class="btn btn-secondary">&laquo; Back to the city</a>
 	</div>
 @endsection

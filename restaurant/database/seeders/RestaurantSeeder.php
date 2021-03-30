@@ -22,8 +22,8 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Skåne Boulebar',
                 'description' => 'Mitt på Drottningtorget i Malmö, i det gamla ridhuset från 1800-talet.',
                 'address' => 'Drottningtorget 8',
-                'admin_id' => '1',
-                'county_id' => '1',
+                'admin_id' => '3',
+                'city_id' => '1',
 
         ]);
         }
@@ -35,8 +35,8 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Västra Götalands restuarant',
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' mjölgatan 2',
-                'admin_id' => '1',
-                'county_id' => '2',
+                'admin_id' => '3',
+                'city_id' => '2',
         ]);
         }
 
@@ -47,8 +47,8 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Stockholms vinkällare',
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' Döbelnsgatan 8',
-                'admin_id' => '1',
-                'county_id' => '3',
+                'admin_id' => '3',
+                'city_id' => '3',
         ]);
         }
 

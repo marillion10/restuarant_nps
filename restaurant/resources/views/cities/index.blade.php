@@ -1,27 +1,41 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-dark">Cities</h1>
+	<h1>Cities</h1>
 
-	@foreach($cities as $city)
-		<article class="card">
-			<div class="card-body">
-				<h5 class="card-title"><a href="{{ route('cities.show', ['city' => $city->id]) }}">{{ $city->name }}</a></h5>
-				<div class="metadata">
-					<ul class="list-inline">
-						<li class="list-inline-item">Date: {{ $city->created_at }}</li>
-						<li class="list-inline-item">Name: {{ $city->name }}</li>
-					</ul>
-				</div>
+	<table class="table table-striped table-hover table-responsive">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Restaurants</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($cities as $city)
+				<tr>
+					<td>{{ $city->id }}</td>
+					<td>{{ $city->name }}</td>
+					<td>{{ $city->restaurants()->count() }}</td>
+					<td>
+						<div class="d-flex">
+							<a href="/cities/{{ $city->id }}" class="btn btn-primary btn-sm me-1">View</a>
+							<a href="/cities/{{ $city->id }}/edit" class="btn btn-warning btn-sm me-1">Edit</a>
+							<form action="/cities/{{ $city->id }}" method="POST">
+								@csrf
+								@method('DELETE')
 
-				<a href="{{ route('cities.show', ['city' => $city]) }}" class="btn btn-success">Read more &raquo;</a>
-			</div>
-		</article>
-	@endforeach
+								<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+							</form>
+						</div>
+					</td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
 
-	@auth
-		<div class="mt-4">
-			<a href="/cities/create" class="btn btn-dark">Create a new City</a>
-		</div>
-	@endauth
+	<div class="mt-3">
+		<a href="/cities/create" class="btn btn-primary">Create a new City</a>
+	</div>
 @endsection
