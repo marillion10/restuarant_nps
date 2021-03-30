@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view('restaurants/index', [
-			'restaurants' => Restaurant::all(),
+        return view('restaurants/index', ['restaurants' => Restaurant::all(),
 		]);
     }
 
@@ -26,12 +26,13 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-		return view('restaurants/create');
+		return view('restaurants/create', ['city' => $city]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -54,9 +55,8 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant]);
+		return redirect()->route("/restaurants/", ['restaurant' => $restaurant]);
     }
-
     /**
      * Display the specified resource.
      *

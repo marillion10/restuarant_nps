@@ -20,10 +20,10 @@
 					<textarea id="address" name="address" class="form-control"></textarea>
 				</div>
 
-                <div class="mb-3">
+             {{--    <div class="mb-3">
 					<label for="city" class="form-label">city</label>
 					<textarea id="city" name="city" class="form-control"></textarea>
-				</div>
+				</div> --}}
 
 				<div class="mb-3">
 					<label for="description" class="form-label">Description</label>

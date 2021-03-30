@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('admin_id')->unsigned();
+            $table->bigInteger('county_id')->unsigned();
             $table->timestamps();
         });
     }

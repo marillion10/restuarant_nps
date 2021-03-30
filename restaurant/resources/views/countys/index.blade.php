@@ -19,7 +19,7 @@
 					@endif
 				</p>
 
-				<a href="{{ route('countys.show', ['county' => $county]) }}" class="btn btn-success">Read more &raquo;</a>
+				<a href="{{ route('countys.show', ['county' => $county]) }}" class="btn btn-success">See Restaurants &raquo;</a>
 			</div>
 		</article>
 	@endforeach

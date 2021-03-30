@@ -3,6 +3,7 @@
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountyController;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/countys', CountyController::class);
 Route::resource('/cities', CityController::class);
+
 
 Route::middleware(['auth'])->group(function() {
 });

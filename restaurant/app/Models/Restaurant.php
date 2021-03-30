@@ -15,7 +15,6 @@ class Restaurant extends Model
 	protected $fillable = [
 		'name',
 		'address',
-		'city',
         'description',
 	];
 
@@ -26,5 +25,9 @@ class Restaurant extends Model
 	 */
 	public function admin() {
 		return $this->belongsTo(User::class);
+	}
+
+	public function Restaurants() {
+		return $this->belongsTo(City::class);
 	}
 }
