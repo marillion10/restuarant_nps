@@ -13,6 +13,11 @@
 			<input type="text" id="name" name="name" class="form-control" placeholder="Enter name of restaurant" required value="{{ $restaurant->name }}">
 		</div>
 
+        <div class="mb-3">
+			<label for="address" class="form-label">Address</label>
+			<textarea id="address" name="address" class="form-control">{{ $restaurant->address }}</textarea>
+		</div>
+
 		<div class="mb-3">
 			<label for="description" class="form-label">Description</label>
 			<textarea id="description" name="description" class="form-control">{{ $restaurant->description }}</textarea>
