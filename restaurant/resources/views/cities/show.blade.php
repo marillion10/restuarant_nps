@@ -8,7 +8,7 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Title</th>
+				<th>Name</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -16,7 +16,7 @@
 			@foreach($city->restaurants as $restaurant)
 				<tr>
 					<td>{{ $restaurant->id }}</td>
-					<td>{{ $restaurant->title }}</td>
+					<td>{{ $restaurant->name }}</td>
 					<td>
 						<div class="d-flex">
 							<a href="/cities/{{ $city->id }}/restaurants/{{ $restaurant->id }}" class="btn btn-primary btn-sm me-1">View</a>
