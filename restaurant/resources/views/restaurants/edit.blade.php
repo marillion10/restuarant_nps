@@ -8,6 +8,8 @@
 		@csrf
 		@method('PUT')
 
+		<input type="hidden" name="city_id" value="{{$city->id}}">
+
 		<div class="mb-3">
 			<label for="name" class="form-label">Name</label>
 			<input type="text" id="name" name="name" class="form-control" placeholder="Enter name of restaurant" required value="{{ $restaurant->name }}">

@@ -3,11 +3,11 @@
 @section('content')
 	<h1><strong>Here be list of restaurants</strong></h1>
 
-	@if(count($resturants) > 0)
+	@if(!empty($restaurants))
 		<ul>
 			@foreach($restaurants as $restaurant)
 				<li>
-					<a href="/resturants/{{ $resturant->id }}">
+					<a href="/restaurants/{{ $restaurant->id }}">
 						{{ $restaurant->name }}
 					</a>
 				</li>
