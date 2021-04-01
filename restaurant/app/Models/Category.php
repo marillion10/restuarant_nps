@@ -24,4 +24,8 @@ class Category extends Model
 	public function admin() {
 		return $this->belongsTo(User::class);
 	}
+
+    public function restaurants() {
+		return $this->belongsToMany(Restaurant::class);
+	}
 }

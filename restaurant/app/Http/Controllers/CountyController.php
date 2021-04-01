@@ -17,7 +17,7 @@ class CountyController extends Controller
     {
         return view('counties/index', [
 			'counties' => County::all(),
-		]);
+            ]);
     }
 
     /**
@@ -46,11 +46,11 @@ class CountyController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a county for the restaurant.');
 		}
 
-		$county = Auth::user()->counties()->create([
+		$county = Auth::user()->counties()->create([   // 42
 			'name' => $request->input('name'),
 		]);
 
-		return redirect()->route('counties.show', ['county' => $county]);
+		return redirect()->route('counties.show', ['county' => $county]);    // counties/42
     }
 
     /**

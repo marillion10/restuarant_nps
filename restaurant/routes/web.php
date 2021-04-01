@@ -26,10 +26,17 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::resource('/cities/{city}/restaurants', RestaurantController::class);
+Route::resource('/counties/{county}/cities', CityController::class);
+
+
+Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
 Route::resource('/categories', CategoryController::class);
+
+
 
 Route::middleware(['auth'])->group(function() {
 });

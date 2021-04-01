@@ -14,18 +14,25 @@ class City extends Model
 	 */
 	protected $fillable = [
 		'name',
+        'county_id',
 	];
 
 	/**
 	 * Get all restaurants for this city.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function admin() {
 		return $this->belongsTo(User::class);
 	}
+
     public function restaurants() {
-		return $this->hasMany(Restaurant::class);
+        return $this->hasMany(Restaurant::class);
+    }
+
+    public function county() {
+		return $this->belongsTo(County::class);
 	}
+
 }

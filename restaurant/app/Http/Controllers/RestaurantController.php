@@ -22,13 +22,11 @@ class RestaurantController extends Controller
 		]);
     }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * GET `/projects/{city}/restaurants`
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
@@ -59,9 +57,8 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
-        		// redirect user to `/cities/{city}`
 		return redirect("/cities/{$city->id}")
-        ->with("success", "Todo successfully created with ID {$restaurant->id}.");
+			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }
 
     /**
@@ -72,7 +69,7 @@ class RestaurantController extends Controller
      */
     public function show(City $city,Restaurant $restaurant)
     {
-		return view('restaurants/show', ['city' => $city, 'restaurant' => $restaurant]);
+        return view('restaurants/show', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -110,7 +107,6 @@ class RestaurantController extends Controller
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 

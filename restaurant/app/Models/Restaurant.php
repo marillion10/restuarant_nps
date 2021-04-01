@@ -16,6 +16,7 @@ class Restaurant extends Model
 		'name',
         'city_id',
 		'address',
+		'city_id',
         'description',
 	];
 
@@ -27,7 +28,13 @@ class Restaurant extends Model
 	public function admin() {
 		return $this->belongsTo(User::class);
 	}
-    public function city() {
-		return $this->belongsTo(City::class);
+
+        public function city() {
+        return $this->belongsTo(City::class);
+    }
+
+    public function categories() {
+		return $this->belongsToMany(Category::class);
 	}
+
 }

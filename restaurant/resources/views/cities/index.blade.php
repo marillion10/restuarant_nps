@@ -26,14 +26,10 @@
 								@csrf
 								@method('DELETE')
 
-								<button type="submit" class="btn btn-danger btn-sm">Delete</button>
-							</form>
-						</div>
-					</td>
-				</tr>
-			@endforeach
-		</tbody>
-	</table>
+				<a href="{{ route('cities.show', ['city' => $city]) }}" class="btn btn-success">See restaurants &raquo;</a>
+			</div>
+		</article>
+	@endforeach
 
 	<div class="mt-3">
 		<a href="/cities/create" class="btn btn-primary">Create a new City</a>

@@ -25,10 +25,11 @@
 		</dl>
 	</div>
 
-	@if($restaurant->description)
-		<h2 class="h5">Description</h2>
-		<p>{{ $restaurant->description }}</p>
-	@endif
+			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
+			@auth
+				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
+					<div class="actions">
+						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-success">Edit restaurant</a>
 
 	<div class="mt-5">
 		<a href="/cities/{{ $restaurant->city->id }}" class="btn btn-secondary">&laquo; Back to the city</a>

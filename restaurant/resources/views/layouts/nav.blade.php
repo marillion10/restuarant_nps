@@ -11,10 +11,13 @@
 			<!-- Left Side Of Navbar -->
 			<ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('counties.index')}}">Counties</a>
+                    <a class="nav-link" href="{{ route('restaurants.index')}}">Restaurants</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cities.index')}}">Cities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('counties.index')}}">Counties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('categories.index')}}">Categories</a>

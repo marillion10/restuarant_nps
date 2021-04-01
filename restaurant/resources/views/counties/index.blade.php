@@ -14,15 +14,8 @@
 					</ul>
 				</div>
 
-				<p class="excerpt">
-					@if(empty($county->name))
-					@endif
-				</p>
+				<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-success">See cities &raquo;</a>
 
-                <a href="{{ route('restaurants.index') }}?county_id=<?php echo $county->id; ?>" class="btn btn-dark">Restaurants</a>
-
-                <a href="{{ route('restaurants.create') }}?county_id=<?php echo $county->id; ?>" class="btn btn-dark">Create new restaurant</a>
-				<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-success">Read more &raquo;</a>
 			</div>
 		</article>
 	@endforeach

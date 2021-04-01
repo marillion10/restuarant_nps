@@ -6,13 +6,15 @@
 	<form class="form" action="/cities" method="POST">
 		@csrf
 
-		<div class="mb-3">
-			<label for="name" class="form-label">City</label>
-			<input type="text" id="name" name="name" class="form-control" placeholder="Enter name of city" required>
-		</div>
+	        <form class="form" action="/counties/{{ $county->id }}/cities" method="POST">
+				@csrf
 
-		<button type="submit" class="btn btn-success w-100">Create</button>
-	</form>
+                <input type="hidden" name="county_id" value="{{$county->id}}">
+
+				<div class="mb-3">
+					<label for="name" class="form-label">Name</label>
+					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the title of your city" required>
+				</div>
 
 	<div class="mt-5">
 		<a href="/cities" class="btn btn-secondary">&laquo; Back</a>

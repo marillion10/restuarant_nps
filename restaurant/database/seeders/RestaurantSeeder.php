@@ -22,13 +22,25 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Skåne Boulebar',
                 'description' => 'Mitt på Drottningtorget i Malmö, i det gamla ridhuset från 1800-talet.',
                 'address' => 'Drottningtorget 8',
-                'admin_id' => '3',
+                'admin_id' => '1',
                 'city_id' => '1',
 
         ]);
         }
 
-        if (Restaurant::where('name', 'Västra Götalands  restuarant')->doesntExist()) {
+        if (Restaurant::where('name', 'Blackstone Steakhouse')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Blackstone Steakhouse',
+                'description' => 'Blackstone Steakhouse är en av Göteborgs nyaste och mest spännande restauranger. ',
+                'address' => ' Kungstorget 3',
+                'admin_id' => '1',
+                'city_id' => '2',
+        ]);
+        }
+
+        if (Restaurant::where('name', 'Stockholms vinkällare')->doesntExist()) {
 
             Restaurant::create( [
         // Create initial user
@@ -47,7 +59,7 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Stockholms vinkällare',
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' Döbelnsgatan 8',
-                'admin_id' => '3',
+                'admin_id' => '1',
                 'city_id' => '3',
         ]);
         }

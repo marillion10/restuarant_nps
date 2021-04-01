@@ -20,13 +20,10 @@
 			<textarea id="address" name="address" class="form-control">{{ $restaurant->address }}</textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="description" class="form-label">Description</label>
-			<textarea id="description" name="description" class="form-control">{{ $restaurant->description }}</textarea>
-		</div>
-
-		<button type="submit" class="btn btn-success w-100">Update</button>
-	</form>
+                <div class="mb-3">
+					<label for="description" class="form-label">Description</label>
+					<textarea id="description" name="description" class="form-control" rows="10">{{ $restaurant->description }}</textarea>
+				</div>
 
 	<div class="mt-5">
 		<a href="/cities/{{ $city->id }}" class="btn btn-secondary">&laquo; Back</a>
