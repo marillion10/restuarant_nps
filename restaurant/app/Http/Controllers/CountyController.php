@@ -46,7 +46,7 @@ class CountyController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a county for the restaurant.');
 		}
 
-		$county = County::create([   // 42
+		$county = Auth::user()->counties()->create([   // 42
 			'name' => $request->input('name'),
 		]);
 

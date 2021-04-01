@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\County;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,11 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(County $county)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a city.');
 
-		return view('cities/create');
+		return view('cities/create', ['county'=>$county]);
     }
 
     /**
@@ -49,6 +50,7 @@ class CityController extends Controller
 
 		$city = Auth::user()->cities()->create([
 			'name' => $request->input('name'),
+			'county_id' => $request->input('county_id'),
 		]);
 
 		return redirect()->route('cities.show', ['city' => $city]);

@@ -14,12 +14,14 @@ class City extends Model
 	 */
 	protected $fillable = [
 		'name',
+        'county_id',
 	];
 
 	/**
 	 * Get the User that this Article is written by.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function admin() {
 		return $this->belongsTo(User::class);
@@ -28,5 +30,9 @@ class City extends Model
     public function restaurants() {
         return $this->hasMany(Restaurant::class);
     }
+
+    public function county() {
+		return $this->belongsTo(County::class);
+	}
 
 }

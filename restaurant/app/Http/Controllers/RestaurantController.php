@@ -15,7 +15,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(City $city)
     {
         return view('restaurants/index', [
 			'restaurants' => Restaurant::all(),
@@ -68,7 +68,6 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         return view('restaurants/show', ['restaurant' => $restaurant]);
-
     }
 
     /**
@@ -102,7 +101,6 @@ class RestaurantController extends Controller
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 

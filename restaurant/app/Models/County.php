@@ -13,7 +13,7 @@ class County extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name'
+		'name',
 	];
 
 	/**
@@ -25,7 +25,7 @@ class County extends Model
     public function admin() {
 		return $this->belongsTo(User::class);
 	}
-    public function restaurants() {
-        return $this->hasMany(Restaurant::class);
+    public function cities() {
+        return $this->hasMany(City::class);
     }
 	}

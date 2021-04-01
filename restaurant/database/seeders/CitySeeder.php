@@ -20,6 +20,7 @@ class CitySeeder extends Seeder
         // Create initial user
                 'name' => 'Malmö',
                 'admin_id' => '1',
+                'county_id' => '1',
 
         ]);
         }
@@ -30,6 +31,8 @@ class CitySeeder extends Seeder
         // Create initial user
                 'name' => 'Göteborg',
                 'admin_id' => '1',
+                'county_id' => '2',
+
 
         ]);
         }
@@ -40,6 +43,8 @@ class CitySeeder extends Seeder
         // Create initial user
                 'name' => 'Stockholm',
                 'admin_id' => '1',
+                'county_id' => '3',
+
         ]);
         }
     }

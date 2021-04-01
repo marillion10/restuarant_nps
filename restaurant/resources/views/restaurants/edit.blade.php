@@ -21,11 +21,6 @@
 					<textarea id="address" name="address" class="form-control">{{ $restaurant->address }}</textarea>
 				</div>
 
-				<div class="mb-3">
-					<label for="city" class="form-label">City</label>
-					<textarea id="city" name="city" class="form-control" rows="10">{{ $restaurant->city }}</textarea>
-				</div>
-
                 <div class="mb-3">
 					<label for="description" class="form-label">Description</label>
 					<textarea id="description" name="description" class="form-control" rows="10">{{ $restaurant->description }}</textarea>

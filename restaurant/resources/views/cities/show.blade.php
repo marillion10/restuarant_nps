@@ -24,6 +24,8 @@
 				@if(Illuminate\Support\Facades\Auth::user()->id === $city->admin->id)
 					<div class="actions">
 
+                            <a href="/cities/{{ $city->id }}/restaurants/create" class="btn btn-dark">Create a new restaurant</a>
+
 						<a href="{{ route('cities.edit', ['city' => $city]) }}" class="btn btn-success">Edit city</a>
 
 						<form action="{{ route('cities.destroy', ['city' => $city]) }}" method="POST">

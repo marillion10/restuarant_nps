@@ -14,11 +14,4 @@
 		</article>
 	@endforeach
 
-	@auth
-		<div class="mt-4">
-
-            <a href="/cities/{{ $restaurant->id }}/restaurants/create" class="btn btn-dark">Create a new restaurant</a>
-
-		</div>
-	@endauth
 @endsection

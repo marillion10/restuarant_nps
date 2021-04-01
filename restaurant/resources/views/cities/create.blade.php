@@ -7,8 +7,10 @@
 		<div class="card-body">
 			<h5 class="card-title">New city</h5>
 
-			<form class="form" action="{{ route('cities.store') }}" method="POST">
+	        <form class="form" action="/counties/{{ $county->id }}/cities" method="POST">
 				@csrf
+
+                <input type="hidden" name="county_id" value="{{$county->id}}">
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Name</label>

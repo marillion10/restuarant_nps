@@ -14,7 +14,8 @@
 					</ul>
 				</div>
 
-				<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-success">Read more &raquo;</a>
+				<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-success">See cities &raquo;</a>
+
 			</div>
 		</article>
 	@endforeach
