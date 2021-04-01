@@ -15,9 +15,9 @@ class CountyController extends Controller
      */
     public function index()
     {
-        return view('countys/index', [
-			'countys' => County::all(),
-		]);
+        return view('counties/index', [
+			'counties' => County::all(),
+            ]);
     }
 
     /**
@@ -29,7 +29,7 @@ class CountyController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a county.');
 
-		return view('countys/create');
+		return view('counties/create');
     }
 
     /**
@@ -46,11 +46,11 @@ class CountyController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a county for the restaurant.');
 		}
 
-		$county = Auth::user()->countys()->create([
+		$county = Auth::user()->counties()->create([   // 42
 			'name' => $request->input('name'),
 		]);
 
-		return redirect()->route('countys.show', ['county' => $county]);
+		return redirect()->route('counties.show', ['county' => $county]);    // counties/42
     }
 
     /**
@@ -61,7 +61,7 @@ class CountyController extends Controller
      */
     public function show(County $county)
     {
-        return view('countys/show', ['county' => $county]);
+        return view('counties/show', ['county' => $county]);
 
     }
 
@@ -75,7 +75,7 @@ class CountyController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $county->admin->id, 401, 'You have to be logged in as an admin to edit this county.');
 
-		return view('countys/edit', ['county' => $county]);
+		return view('counties/edit', ['county' => $county]);
     }
 
     /**
@@ -97,7 +97,7 @@ class CountyController extends Controller
 			'name' => $request->input('name'),
 		]);
 
-		return redirect()->route('countys.show', ['county' => $county])->with('success', 'county updated.');
+		return redirect()->route('counties.show', ['county' => $county])->with('success', 'county updated.');
     }
 
     /**
@@ -112,6 +112,6 @@ class CountyController extends Controller
 
 		$county->delete();
 
-		return redirect()->route('countys.index')->with('success', 'County has been deleted');
+		return redirect()->route('counties.index')->with('success', 'County has been deleted');
     }
 }

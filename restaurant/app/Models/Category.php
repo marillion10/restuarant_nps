@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\RestaurantController;
+
 use Illuminate\Database\Eloquent\Model;
 
-class County extends Model
+class Category extends Model
 {
         	/**
 	 * The attributes that are mass assignable.
@@ -17,15 +17,15 @@ class County extends Model
 	];
 
 	/**
-	 *
+	 * Get the User that this Article is written by.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-    public function admin() {
+	public function admin() {
 		return $this->belongsTo(User::class);
 	}
-    public function cities() {
-        return $this->hasMany(City::class);
-    }
+
+    public function restaurants() {
+		return $this->belongsToMany(Restaurant::class);
 	}
+}
