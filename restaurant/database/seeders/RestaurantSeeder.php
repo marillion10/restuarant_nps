@@ -23,7 +23,20 @@ class RestaurantSeeder extends Seeder
                 'description' => 'Mitt på Drottningtorget i Malmö, i det gamla ridhuset från 1800-talet.',
                 'address' => 'Drottningtorget 8',
                 'admin_id' => '1',
+                'city_id' => '1',
 
+        ]);
+        }
+
+        if (Restaurant::where('name', 'Blackstone Steakhouse')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Blackstone Steakhouse',
+                'description' => 'Blackstone Steakhouse är en av Göteborgs nyaste och mest spännande restauranger. ',
+                'address' => ' Kungstorget 3',
+                'admin_id' => '1',
+                'city_id' => '2',
         ]);
         }
 
@@ -35,6 +48,7 @@ class RestaurantSeeder extends Seeder
                 'description' => 'Hos oss på Stockholms vinkällare hittar du en unik festvåning mitt i Stockholm. ',
                 'address' => ' Döbelnsgatan 8',
                 'admin_id' => '1',
+                'city_id' => '3',
         ]);
         }
 

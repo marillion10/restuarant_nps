@@ -14,11 +14,6 @@
 					</ul>
 				</div>
 
-				<p class="excerpt">
-					@if(empty($county->name))
-					@endif
-				</p>
-
 				<a href="{{ route('counties.show', ['county' => $county]) }}" class="btn btn-success">Read more &raquo;</a>
 			</div>
 		</article>

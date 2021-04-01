@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,11 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-		return view('restaurants/create');
+		return view('restaurants/create', ['city'=>$city]);
     }
 
     /**
@@ -39,7 +40,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
@@ -50,11 +51,12 @@ class RestaurantController extends Controller
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city' => $request->input('city'),
+			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant]);
+		return redirect("/cities/{$city->id}")
+			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }
 
     /**
@@ -100,7 +102,7 @@ class RestaurantController extends Controller
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
-			'city' => $request->input('city'),
+			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);
 

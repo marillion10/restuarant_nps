@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Database\Eloquent\Model;
 
 class County extends Model
@@ -20,8 +20,12 @@ class County extends Model
 	 *
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
     public function admin() {
 		return $this->belongsTo(User::class);
 	}
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class);
+    }
 	}

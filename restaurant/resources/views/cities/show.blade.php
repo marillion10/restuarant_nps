@@ -6,17 +6,24 @@
 	<article class="card single-article">
 		<div class="card-body">
 			<h5 class="card-title">{{ $city->name }}</h5>
-			<div class="metadata">
-				<ul class="list-inline">
-					<li class="list-inline-item">Date: {{ $city->created_at }}</li>
-				</ul>
-			</div>
 
+            @foreach($city->restaurants as $restaurant)
+            <ul class="list-inline-item">
+                    <li class="list-group-item">{{ $restaurant->id }}</li>
+                    <li class="list-group-item">{{ $restaurant->name }}</li>
+                    <li class="list-group-item">{{ $restaurant->address }}</li>
+                    <li class="list-group-item">{{ $restaurant->description }}</li>
+
+            </ul>
+            <br>
+
+            <br>
+            @endforeach
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
 				@if(Illuminate\Support\Facades\Auth::user()->id === $city->admin->id)
 					<div class="actions">
-						<a href="{{ route('cities.create') }}" class="btn btn-dark">Create new city</a>
+
 						<a href="{{ route('cities.edit', ['city' => $city]) }}" class="btn btn-success">Edit city</a>
 
 						<form action="{{ route('cities.destroy', ['city' => $city]) }}" method="POST">
