@@ -44,7 +44,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, City $city)
+    public function store(Request $request)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
