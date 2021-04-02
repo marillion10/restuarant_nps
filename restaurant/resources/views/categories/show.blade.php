@@ -12,28 +12,7 @@
 				</ul>
 			</div>
 
-
-            <?php
-			foreach ($restaurants as $restaurant) {
-				?>
-					<tr>
-						<td><?php echo $restaurant->id; ?></td>
-						<td><?php echo $restaurant->name; ?></td>
-						<td>
-							<ul>
-								<?php
-									foreach ($restaurant->categories()->orderBy('name', 'desc')->get() as $category) {
-										echo "<li>{$category->name}</li>";
-									}
-								?>
-							</ul>
-						</td>
-					</tr>
-				<?php
-			}
-		?>
-
-
+			
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth

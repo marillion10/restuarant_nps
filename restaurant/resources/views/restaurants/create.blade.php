@@ -25,7 +25,7 @@
 				</div>
 
                 <fieldset class="mb-3">
-					<legend>Tags</legend>
+					<legend>Tag</legend>
 
 					@foreach($tags as $tag)
 						<div class="form-check form-check-inline">

@@ -7,12 +7,27 @@
 		<div class="card-body">
 			<h5 class="card-title">{{ $city->name }}</h5>
 
-            @foreach($city->restaurants as $restaurant)
-            <ul class="list-inline-item">
-                    <li class="list-group-item">{{ $restaurant->id }}</li>
-                    <li class="list-group-item">{{ $restaurant->name }}</li>
-                    <li class="list-group-item">{{ $restaurant->address }}</li>
-                    <li class="list-group-item">{{ $restaurant->description }}</li>
+			@foreach($city->restaurants as $restaurant)
+			<article class="card">
+				<div class="card-body">
+					<h5 class="card-title h5"><a href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
+					<div class="metadata">
+						<ul class="list-inline">
+							<li class="list-inline-item">Date: {{$restaurant->created_at}} </li>
+							<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
+							<li class="list-inline-item">
+								Tags:
+								{!!
+									$restaurant->tags->map(
+										function($tag) {
+											return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
+										}
+									)->implode(", ")
+								 !!}
+							</li>
+							
+						</ul>
+					</div>
 
             </ul>
             <br>

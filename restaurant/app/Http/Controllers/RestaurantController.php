@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Tag;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(City $city)
+    public function index()
     {
         return view('restaurants/index', [
 			'restaurants' => Restaurant::all(),
@@ -31,7 +32,10 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-		return view('restaurants/create', ['city'=>$city]);
+        
+
+		return view('restaurants/create', [
+            'city'=>$city, 'tags' => Tag::orderby('name')->get()]);
     }
 
     /**
@@ -55,10 +59,11 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
-        // attach selected tags to article
+        // attach selected tags to restaurant
 		$restaurant->tags()->attach($request->input('tags'));
 
-		return redirect("/cities/{$city->id}")
+        // redirect user to the nowly created restaurant
+		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])
 			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }
 
@@ -83,7 +88,7 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this restaurant.');
 
-		return view('restaurants/edit', ['restaurant' => $restaurant]);
+		return view('restaurants/edit', ['restaurant' => $restaurant, 'tags' => Tag::orderby('name')->get()]);
     }
 
     /**
@@ -97,16 +102,23 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this article.');
 
+        // bail validation if no name is set
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a title for the restaurant.');
 		}
 
+        // update restaurant with form content
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
 			'description' => $request->input('description'),
 		]);
 
+        //sync selected tags to restaurant (remove those existing but not present in form reques, add those not existing but present in form request)
+        $restaurant->tags()->sync($request->input('tags'));
+
+
+        //redirect user to the updated restaurant
 		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])->with('success', 'restaurant updated.');
     }
 
@@ -120,6 +132,7 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to delete this restaurant.');
 
+        $restaurant->tags()->sync([]);
 		$restaurant->delete();
 
 		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');

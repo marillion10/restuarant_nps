@@ -20,8 +20,8 @@ class CreateRestaurantTagPivotTable extends Migration
 
             $table->unique(['restaurant_id', 'tag_id']);
 
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->ondelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->ondelete('cascade');
 
             $table->timestamps();
         });

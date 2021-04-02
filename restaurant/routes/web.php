@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,9 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 Route::resource('/counties/{county}/cities', CityController::class);
+Route::resource('/restaurants/tags', TagController::class);
 
 
 Route::resource('/restaurants', RestaurantController::class);
