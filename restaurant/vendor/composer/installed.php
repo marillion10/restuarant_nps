@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'af2af5021b79f610dcbad1c8dd62a98a9dec9ff5',
+    'reference' => 'd12b623a71ee631745c7d5d2f8e8cd3b9e27e66d',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -31,12 +31,12 @@
     ),
     'barryvdh/laravel-ide-helper' => 
     array (
-      'pretty_version' => 'v2.9.1',
-      'version' => '2.9.1.0',
+      'pretty_version' => 'v2.9.2',
+      'version' => '2.9.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8d8302ff6adb55f8b844c798b8b1ffdee142f7e5',
+      'reference' => 'c8ebf563a003e41becf9cfe30a7ff69e15e45c23',
     ),
     'barryvdh/reflection-docblock' => 
     array (
@@ -562,7 +562,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'af2af5021b79f610dcbad1c8dd62a98a9dec9ff5',
+      'reference' => 'd12b623a71ee631745c7d5d2f8e8cd3b9e27e66d',
     ),
     'laravel/sail' => 
     array (

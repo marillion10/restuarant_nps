@@ -55,6 +55,9 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
+        // attach selected tags to article
+		$restaurant->tags()->attach($request->input('tags'));
+
 		return redirect("/cities/{$city->id}")
 			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }

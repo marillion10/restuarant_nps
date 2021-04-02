@@ -23,6 +23,7 @@ class Restaurant extends Model
 	 * Get the User that this Article is written by.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function admin() {
 		return $this->belongsTo(User::class);
@@ -32,8 +33,8 @@ class Restaurant extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function categories() {
-		return $this->belongsToMany(Category::class);
+    public function tags() {
+		return $this->belongsToMany(Tag::class);
 	}
 
 }

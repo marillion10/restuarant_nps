@@ -24,6 +24,17 @@
 					<textarea id="description" name="description" class="form-control" rows="10"></textarea>
 				</div>
 
+                <fieldset class="mb-3">
+					<legend>Tags</legend>
+
+					@foreach($tags as $tag)
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+							<label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
+						</div>
+					@endforeach
+				</fieldset>
+
 				<button type="submit" class="btn btn-dark w-100">Create</button>
 			</form>
 

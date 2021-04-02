@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
-        	/**
+    /**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
@@ -16,12 +15,13 @@ class Category extends Model
 		'name',
 	];
 
-	/**
+    	/**
 	 * Get the User that this Article is written by.
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function admin() {
-		return $this->belongsTo(User::class);
+
+    public function restaurants() {
+		return $this->belongsToMany(Restaurant::class);
 	}
 }
