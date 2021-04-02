@@ -20,7 +20,7 @@ class CategorySeeder extends Seeder
             Category::create( [
         // Create initial user
                 'name' => 'Pizza',
-                'admin_id' => '2',
+                'admin_id' => '1',
 
         ]);
         }
@@ -30,7 +30,7 @@ class CategorySeeder extends Seeder
             Category::create( [
         // Create initial user
                 'name' => 'Kött',
-                'admin_id' => '2',
+                'admin_id' => '1',
 
         ]);
         }
@@ -40,7 +40,7 @@ class CategorySeeder extends Seeder
             Category::create( [
         // Create initial user
                 'name' => 'Fisk',
-                'admin_id' => '2',
+                'admin_id' => '1',
         ]);
         }
     }
