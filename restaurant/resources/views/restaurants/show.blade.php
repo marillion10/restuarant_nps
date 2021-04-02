@@ -5,7 +5,7 @@
 
 	<article class="card single-article">
 		<div class="card-body">
-			<h5 class="card-title">{{ $restaurant->name }}</h5>
+			<h5 class="card-title h4">{{ $restaurant->name }}</h5>
 			<div class="metadata">
 				<ul class="list-inline">
 					<li class="list-inline-item">Date: {{ $restaurant->created_at }}</li>
@@ -20,6 +20,19 @@
 			<div class="content">
 				<p>{{ str_replace('\n', '<br>', $restaurant->description) }}</p>
 			</div>
+
+			<hr />
+
+			<p>
+				<h3 class="h6">Tag:</h3>
+				<ul class="list-inline">
+				@foreach ($restaurant->tags as $tag)
+				<li class="list-inline-item">
+					<a href="">{{$tag->name}}</a>
+				</li>
+				@endforeach
+				</ul>
+			</p>
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
 			@auth

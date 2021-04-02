@@ -26,6 +26,17 @@
 					<textarea id="description" name="description" class="form-control" rows="10">{{ $restaurant->description }}</textarea>
 				</div>
 
+				<fieldset class="mb-3">
+					<legend>Tag</legend>
+
+					@foreach($tags as $tag)
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($restaurant->tags->contains($tag))checked @endif>
+							<label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
+						</div>
+					@endforeach
+				</fieldset>
+
 				<button type="submit" class="btn btn-success w-100">Update</button>
 			</form>
 		</div>

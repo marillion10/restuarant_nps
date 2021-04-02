@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'af2af5021b79f610dcbad1c8dd62a98a9dec9ff5',
+    'reference' => 'df6f943d5115b1b9a5d6beb34a48b64dc36142e8',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -55,12 +55,12 @@ private static $installed = array (
     ),
     'barryvdh/laravel-ide-helper' => 
     array (
-      'pretty_version' => 'v2.9.1',
-      'version' => '2.9.1.0',
+      'pretty_version' => 'v2.9.2',
+      'version' => '2.9.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8d8302ff6adb55f8b844c798b8b1ffdee142f7e5',
+      'reference' => 'c8ebf563a003e41becf9cfe30a7ff69e15e45c23',
     ),
     'barryvdh/reflection-docblock' => 
     array (
@@ -586,7 +586,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'af2af5021b79f610dcbad1c8dd62a98a9dec9ff5',
+      'reference' => 'df6f943d5115b1b9a5d6beb34a48b64dc36142e8',
     ),
     'laravel/sail' => 
     array (
@@ -1705,6 +1705,7 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
+
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];

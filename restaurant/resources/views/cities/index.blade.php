@@ -19,9 +19,4 @@
 		</article>
 	@endforeach
 
-	@auth
-		<div class="mt-4">
-			<a href="/cities/create" class="btn btn-dark">Create a new City</a>
-		</div>
-	@endauth
 @endsection

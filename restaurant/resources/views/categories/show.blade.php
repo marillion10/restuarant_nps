@@ -12,6 +12,8 @@
 				</ul>
 			</div>
 
+			
+
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
 				@if(Illuminate\Support\Facades\Auth::user()->id === $category->admin->id)
