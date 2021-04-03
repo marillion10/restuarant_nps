@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
 			CitySeeder::class,
 			CategorySeeder::class,
 			RestaurantSeeder::class,
-			TagSeeder::class,
 		]);
 
 		// \App\Models\User::factory(10)->create();

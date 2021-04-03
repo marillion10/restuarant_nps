@@ -12,11 +12,11 @@
 				</ul>
 			</div>
 
-			
+
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $category->admin->id)
+
 					<div class="actions">
 						<a href="{{ route('categories.create') }}" class="btn btn-dark">Create new category</a>
 						<a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-success">Edit category</a>
@@ -28,7 +28,7 @@
 							<button type="submit" class="btn btn-danger">Delete category</button>
 						</form>
 					</div>
-				@endif
+
 			@endauth
 		</div>
 	</article>

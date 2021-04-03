@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRestaurantTagPivotTable extends Migration
+class CreateRestaurantCategoryPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateRestaurantTagPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('restaurant_tag', function (Blueprint $table) {
+        Schema::create('restaurant_category', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('restaurant_id')->unsigned();
-            $table->bigInteger('tag_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
 
-            $table->unique(['restaurant_id', 'tag_id']);
+            $table->unique(['restaurant_id', 'category_id']);
 
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->ondelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('tags')->ondelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->ondelete('cascade');
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateRestaurantTagPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurant_tag');
+        Schema::dropIfExists('restaurant_category');
     }
 }

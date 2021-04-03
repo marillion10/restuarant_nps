@@ -16,16 +16,16 @@
 							<li class="list-inline-item">Date: {{$restaurant->created_at}} </li>
 							<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
 							<li class="list-inline-item">
-								Tags:
+								Categories:
 								{!!
-									$restaurant->tags->map(
-										function($tag) {
-											return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
+									$restaurant->categories->map(
+										function($category) {
+											return '<a href="/restaurants/categories/' . $category->id . '">' . $category->name . '</a>';
 										}
 									)->implode(", ")
 								 !!}
 							</li>
-							
+
 						</ul>
 					</div>
 

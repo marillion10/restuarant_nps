@@ -22,15 +22,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 Route::get('/', function () {
-    return redirect()->route('restaurants.index');
+    return redirect()->route('home');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 Route::resource('/counties/{county}/cities', CityController::class);
-Route::resource('/restaurants/tags', TagController::class);
-
 
 Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);

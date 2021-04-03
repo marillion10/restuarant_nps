@@ -27,12 +27,12 @@
 				</div>
 
 				<fieldset class="mb-3">
-					<legend>Tag</legend>
+					<legend>Category</legend>
 
-					@foreach($tags as $tag)
+					@foreach($categories as $category)
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($restaurant->tags->contains($tag))checked @endif>
-							<label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
+							<input class="form-check-input" type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}" @if($restaurant->categories->contains($category))checked @endif>
+							<label class="form-check-label" for="category_{{ $category->id }}">{{ $category->name }}</label>
 						</div>
 					@endforeach
 				</fieldset>

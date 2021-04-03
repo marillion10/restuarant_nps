@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +32,10 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-        
+
 
 		return view('restaurants/create', [
-            'city'=>$city, 'tags' => Tag::orderby('name')->get()]);
+            'city'=>$city, 'categories' => Category::orderby('name')->get()]);
     }
 
     /**
@@ -59,8 +59,8 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
-        // attach selected tags to restaurant
-		$restaurant->tags()->attach($request->input('tags'));
+        // attach selected categories to restaurant
+		$restaurant->categories()->attach($request->input('categories'));
 
         // redirect user to the nowly created restaurant
 		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])
@@ -88,7 +88,7 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to edit this restaurant.');
 
-		return view('restaurants/edit', ['restaurant' => $restaurant, 'tags' => Tag::orderby('name')->get()]);
+		return view('restaurants/edit', ['restaurant' => $restaurant, 'categories' => Category::orderby('name')->get()]);
     }
 
     /**
@@ -114,8 +114,8 @@ class RestaurantController extends Controller
 			'description' => $request->input('description'),
 		]);
 
-        //sync selected tags to restaurant (remove those existing but not present in form reques, add those not existing but present in form request)
-        $restaurant->tags()->sync($request->input('tags'));
+        //sync selected categories to restaurant (remove those existing but not present in form reques, add those not existing but present in form request)
+        $restaurant->categories()->sync($request->input('categories'));
 
 
         //redirect user to the updated restaurant
@@ -132,7 +132,7 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check() && Auth::user()->id === $restaurant->admin->id, 401, 'You have to be logged in as the admin to delete this restaurant.');
 
-        $restaurant->tags()->sync([]);
+        $restaurant->categories()->sync([]);
 		$restaurant->delete();
 
 		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');

@@ -25,12 +25,12 @@
 				</div>
 
                 <fieldset class="mb-3">
-					<legend>Tag</legend>
+					<legend>Category</legend>
 
-					@foreach($tags as $tag)
+					@foreach($categories as $category)
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
-							<label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
+							<input class="form-check-input" type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}">
+							<label class="form-check-label" for="category_{{ $category->id }}">{{ $category->name }}</label>
 						</div>
 					@endforeach
 				</fieldset>

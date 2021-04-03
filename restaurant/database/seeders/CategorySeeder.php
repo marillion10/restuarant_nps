@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Category;
-
+use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
+    protected static $categories = ['kött','fisk', 'pasta'];
     /**
      * Run the database seeds.
      *
@@ -15,33 +15,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        if (Category::where('name', 'Pizza')->doesntExist()) {
-
-            Category::create( [
-        // Create initial user
-                'name' => 'Pizza',
-                'admin_id' => '2',
-
-        ]);
-        }
-
-        if (Category::where('name', 'Kött')->doesntExist()) {
-
-            Category::create( [
-        // Create initial user
-                'name' => 'Kött',
-                'admin_id' => '2',
-
-        ]);
-        }
-
-        if (Category::where('name', 'Fisk')->doesntExist()) {
-
-            Category::create( [
-        // Create initial user
-                'name' => 'Fisk',
-                'admin_id' => '2',
-        ]);
+        foreach (static::$categories as $category) {
+            if (Category::where('name', $category)->doesntExist()) {
+                Category::create(['name' => $category,
+                            'admin_id' => 1
+                ]);
+            }
         }
     }
 }

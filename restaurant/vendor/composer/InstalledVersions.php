@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'df6f943d5115b1b9a5d6beb34a48b64dc36142e8',
+    'reference' => '1acccfc7e88d6b0794bcd2d42d0103a63f4dd3fe',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -586,7 +586,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'df6f943d5115b1b9a5d6beb34a48b64dc36142e8',
+      'reference' => '1acccfc7e88d6b0794bcd2d42d0103a63f4dd3fe',
     ),
     'laravel/sail' => 
     array (
@@ -1705,7 +1705,6 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
-
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];

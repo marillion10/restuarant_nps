@@ -24,17 +24,17 @@
 			<hr />
 
 			<p>
-				<h3 class="h6">Tag:</h3>
+				<h3 class="h6">Category:</h3>
 				<ul class="list-inline">
-				@foreach ($restaurant->tags as $tag)
+				@foreach ($restaurant->categories as $category)
 				<li class="list-inline-item">
-					<a href="">{{$tag->name}}</a>
+					<a href="">{{$category->name}}</a>
 				</li>
 				@endforeach
 				</ul>
 			</p>
 
-			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
+			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the restaurants admin -->
 			@auth
 				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
 					<div class="actions">

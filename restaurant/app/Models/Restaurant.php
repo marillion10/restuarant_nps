@@ -33,8 +33,8 @@ class Restaurant extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function tags() {
-		return $this->belongsToMany(Tag::class);
+    public function categories() {
+		return $this->belongsToMany(Category::class);
 	}
 
 }
