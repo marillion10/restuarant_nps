@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Restaurant;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
@@ -25,11 +28,11 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a tags.');
 
-		return view('tags/create');
+		return view('tags/create', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -46,6 +49,15 @@ class TagController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a county for a tag.');
 		}
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'unique:tags'
+            
+          ]);
+          
+          if ($validator->fails()) {
+            return redirect()->back()->with('warning', 'Tag already exists choose another name');
+          }
+
 		$tag = Auth::user()->tags()->create([
 			'name' => $request->input('name'),
 		]);
@@ -59,9 +71,9 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(Tag $tag, Restaurant $restaurant, City $city)
     {
-        return view('tags/show', ['tag' => $tag]);
+        return view('tags/show', ['tag' => $tag, 'restaurant' => $restaurant, 'cities' => $city]);
     }
 
     /**
@@ -72,7 +84,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $tag->admin->id, 401, 'You have to be logged in as an admin to edit this tag.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this tag.');
 
 		return view('tags/edit', ['tag' => $tag]);
     }
@@ -86,7 +98,7 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $tag->admin->id, 401, 'You have to be logged in as an admin to edit this category.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this category.');
 
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a name for the category.');
@@ -107,7 +119,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $tag->admin->id, 401, 'You have to be logged in as an admin to delete this category.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this category.');
 
 		$tag->delete();
 

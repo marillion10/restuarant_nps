@@ -7,6 +7,7 @@ use App\Models\County;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller
 {
@@ -48,6 +49,15 @@ class CityController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a name for the city.');
 		}
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'unique:cities'
+            
+          ]);
+          
+          if ($validator->fails()) {
+            return redirect()->back()->with('warning', 'City already exists choose another name');
+          }
+        
 		$city = Auth::user()->cities()->create([
 			'name' => $request->input('name'),
 			'county_id' => $request->input('county_id'),
@@ -76,7 +86,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $city->admin->id, 401, 'You have to be logged in as the admin to edit this city.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this city.');
 
 		return view('cities/edit', ['city' => $city]);
     }
@@ -90,7 +100,7 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $city->admin->id, 401, 'You have to be logged in as the admin to edit this city.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this city.');
 
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a title for the city.');
@@ -111,7 +121,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        abort_unless(Auth::check() && Auth::user()->id === $city->admin->id, 401, 'You have to be logged in as the admin to delete this city.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete this city.');
 
 		$city->delete();
 

@@ -14,7 +14,7 @@
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Name</label>
-					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the title of your city" required>
+					<input type="text" id="name" name="name" class="form-control" placeholder="Enter the title of your city">
 				</div>
 
 				<button type="submit" class="btn btn-dark w-100">Create</button>

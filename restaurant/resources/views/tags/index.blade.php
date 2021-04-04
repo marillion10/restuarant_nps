@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="tetags</h1>
+<h1 class="text-dark">Tags</h1>
 
 	@foreach($tags as $tag)
 		<article class="card">

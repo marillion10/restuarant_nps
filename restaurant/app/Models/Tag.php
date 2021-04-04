@@ -13,6 +13,7 @@ class Tag extends Model
 	 */
 	protected $fillable = [
 		'name',
+		'admin_id',
 	];
 
     	/**
@@ -22,6 +23,6 @@ class Tag extends Model
 	 */
 
     public function restaurants() {
-		return $this->belongsToMany(Restaurant::class, 'admin_id');
+		return $this->belongsToMany(Restaurant::class);
 	}
 }

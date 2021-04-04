@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
 			AdminSeeder::class,
 			CountySeeder::class,
 			CitySeeder::class,
-			CategorySeeder::class,
 			RestaurantSeeder::class,
 			TagSeeder::class,
 		]);
