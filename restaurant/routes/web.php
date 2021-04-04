@@ -35,7 +35,6 @@ Route::resource('/tags', TagController::class);
 Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
-Route::resource('/categories', CategoryController::class);
 
 
 

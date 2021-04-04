@@ -25,7 +25,7 @@
 									)->implode(", ")
 								 !!}
 							</li>
-							
+
 						</ul>
 					</div>
 
@@ -36,9 +36,8 @@
             @endforeach
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $city->admin->id)
-					<div class="actions">
 
+					<div class="actions">
                             <a href="/cities/{{ $city->id }}/restaurants/create" class="btn btn-dark">Create a new restaurant</a>
 
 						<a href="{{ route('cities.edit', ['city' => $city]) }}" class="btn btn-success">Edit city</a>
@@ -50,7 +49,6 @@
 							<button type="submit" class="btn btn-danger">Delete city</button>
 						</form>
 					</div>
-				@endif
 			@endauth
 		</div>
 	</article>

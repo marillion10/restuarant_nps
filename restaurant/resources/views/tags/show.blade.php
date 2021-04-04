@@ -16,7 +16,7 @@
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $tag->admin->id)
+				@if(Illuminate\Support\Facades\Auth::user()->id === $tag->admin['id'])
 					<div class="actions">
 						<a href="{{ route('tags.create') }}" class="btn btn-dark">Create new tag</a>
 						<a href="{{ route('tags.edit', ['tag' => $tag]) }}" class="btn btn-success">Edit tag</a>
