@@ -14,7 +14,8 @@
 					</ul>
 				</div>
 
-				<a href="{{ route('tags.show', ['tag' => $tag]) }}" class="btn btn-success">See Cities &raquo;</a>
+				<div class="actions">
+				<a href="{{ route('tags.show', ['tag' => $tag]) }}" class="btn btn-dark">See Cities &raquo;</a>
 
 				<a href="{{ route('tags.edit', ['tag' => $tag]) }}" class="btn btn-success">Edit Category</a>
 
