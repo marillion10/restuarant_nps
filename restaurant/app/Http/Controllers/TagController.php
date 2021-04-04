@@ -14,7 +14,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        return view('tags/index', [
+			'tags' => Tag::all(),
+		]);
     }
 
     /**
@@ -24,7 +26,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in to create a categories.');
+
+		return view('tags/create');
     }
 
     /**
@@ -46,7 +50,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('tags/show', ['tag' => $category]);
     }
 
     /**
