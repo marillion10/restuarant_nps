@@ -17,7 +17,8 @@ class TagSeeder extends Seeder
     {
         foreach (static::$tags as $tag) {
             if (Tag::where('name', $tag)->doesntExist()) {
-                Tag::create(['name' => $tag]);
+                Tag::create(['name' => $tag,
+                            'admin_id' => 1]);
             }
         }
     }

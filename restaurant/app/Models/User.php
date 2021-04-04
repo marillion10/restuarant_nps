@@ -53,6 +53,8 @@ class User extends Authenticatable
 	}
     public function categories() {
 		return $this->hasMany(Category::class, 'admin_id');
-
+	}
+    public function tags() {
+		return $this->hasMany(Tag::class, 'admin_id');
 	}
 }

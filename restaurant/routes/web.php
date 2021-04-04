@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 Route::resource('/counties/{county}/cities', CityController::class);
-Route::resource('/restaurants/tags', TagController::class);
+Route::resource('/tags', TagController::class);
 
 
 Route::resource('/restaurants', RestaurantController::class);
