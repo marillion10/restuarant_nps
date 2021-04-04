@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-<h1 class="text-dark">Tags</h1>
+<h1 class="text-dark">Categories</h1>
 
 	@foreach($tags as $tag)
 		<article class="card">
@@ -14,14 +14,27 @@
 					</ul>
 				</div>
 
-				<a href="{{ route('tags.show', ['tag' => $tag]) }}" class="btn btn-success">See restaurants &raquo;</a>
+				<a href="{{ route('tags.show', ['tag' => $tag]) }}" class="btn btn-success">See Cities &raquo;</a>
+
+				<a href="{{ route('tags.edit', ['tag' => $tag]) }}" class="btn btn-success">Edit Category</a>
+
+						<form action="{{ route('tags.destroy', ['tag' => $tag]) }}" method="POST">
+							@csrf
+							@method('DELETE')
+
+							<button type="submit" class="btn btn-danger">Delete Category</button>
+						</form>
+
+				
 			</div>
 		</article>
+		
 	@endforeach
+	
 
 	@auth
 		<div class="mt-4">
-			<a href="/tags/create" class="btn btn-dark">Create a new tag</a>
+			<a href="/tags/create" class="btn btn-dark">Create a new Category</a>
 		</div>
 	@endauth
 @endsection

@@ -12,7 +12,7 @@
 						<li class="list-inline-item">Date: {{$restaurant->created_at}} </li>
 						<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
 						<li class="list-inline-item">
-							Tag:
+							Categories:
 							{!!
 								$restaurant->tags->map(
 									function($tag) {

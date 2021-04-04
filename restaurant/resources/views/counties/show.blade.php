@@ -5,19 +5,17 @@
 
 	<article class="card single-article">
 		<div class="card-body">
-			<ul>
 				<h5 class="card-title h4">Restaurants in {{ $county->name }}</h5>
 			<div class="metadata">
             </div>
-			</ul>
+			
 			
 
             @foreach($county->cities as $city)
-            <ul class="list-inline-item">
 				<li class="list-unstyled">
-					<a class="h5" href="{{ route('cities.show', ['city' => $city]) }}">{{ $city->name }}</a>
+					<a class=" h5" href="{{ route('cities.show', ['city' => $city]) }}">{{ $city->name }}</a>
+					
 				</li>
-            </ul>
 
             <br>
 

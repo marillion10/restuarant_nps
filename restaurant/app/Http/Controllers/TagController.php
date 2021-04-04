@@ -73,7 +73,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag, Restaurant $restaurant, City $city)
     {
-        return view('tags/show', ['tag' => $tag, 'restaurant' => $restaurant, 'cities' => $city]);
+        return view('tags/show', ['tag' => $tag, 'restaurants' => $restaurant, 'cities' => $city]);
     }
 
     /**
