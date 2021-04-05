@@ -11,6 +11,7 @@
 			
 			
 
+
             @foreach($county->cities as $city)
 				<li class="list-unstyled">
 					<a class=" h5" href="{{ route('cities.show', ['city' => $city]) }}">{{ $city->name }}</a>

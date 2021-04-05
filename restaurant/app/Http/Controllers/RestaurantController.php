@@ -32,7 +32,7 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-        
+
 
 		return view('restaurants/create', [
             'city'=>$city, 'tags' => Tag::orderby('name')->get()]);
