@@ -8,6 +8,8 @@
 			<h5 class="card-title">{{ $city->name }}</h5>
 
 			@foreach($city->restaurants as $restaurant)
+			<article class="card">
+				<div class="card-body">
 					<h5 class="card-title h5"><a href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
 					<div class="metadata">
 						<ul class="list-inline">
@@ -18,7 +20,7 @@
 								{!!
 									$restaurant->tags->map(
 										function($tag) {
-											return '<a href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
+											return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
 										}
 									)->implode(", ")
 								 !!}
@@ -48,7 +50,8 @@
 						</form>
 					</div>
 			@endauth
-
+		</div>
+	</article>
 
 	<div class="mt-4">
 		<a href="{{ route('cities.index') }}" class="btn btn-dark">Back to cities</a>

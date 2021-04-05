@@ -16,12 +16,12 @@
 							{!!
 								$restaurant->tags->map(
 									function($tag) {
-										return '<a href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
+										return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
 									}
 								)->implode(", ")
 							 !!}
 						</li>
-
+						
 					</ul>
 				</div>
 
@@ -29,7 +29,7 @@
 					@if(empty($restaurant->excerpt))
 					{{substr($restaurant->description, 0, 100) }}...
 					@else
-					{{ $restaurant->excerpt}}
+					{{ $restaurant->excerpt}}	
 					@endif
 				</p>
 

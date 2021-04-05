@@ -16,7 +16,7 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(City $city)
+    public function index()
     {
         return view('Tags/index', [
 			'tags' => Tag::all(),

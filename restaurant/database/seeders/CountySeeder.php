@@ -20,7 +20,7 @@ class CountySeeder extends Seeder
             County::create( [
         // Create initial user
                 'name' => 'Skåne län',
-                'admin_id' => '1',
+                'admin_id' => '2',
 
         ]);
         }
@@ -30,7 +30,7 @@ class CountySeeder extends Seeder
             County::create( [
         // Create initial user
                 'name' => 'Västra Götalands län',
-                'admin_id' => '1',
+                'admin_id' => '2',
 
         ]);
         }
@@ -40,7 +40,7 @@ class CountySeeder extends Seeder
             County::create( [
         // Create initial user
                 'name' => 'Stockholms län',
-                'admin_id' => '1',
+                'admin_id' => '2',
         ]);
         }
     }
