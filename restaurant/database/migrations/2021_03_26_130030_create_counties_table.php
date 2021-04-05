@@ -19,6 +19,8 @@ class CreateCountiesTable extends Migration
             $table->string('name');
             $table->bigInteger('admin_id')->unsigned();
             $table->timestamps();
+
+            $table->unique('name');
         });
     }
 

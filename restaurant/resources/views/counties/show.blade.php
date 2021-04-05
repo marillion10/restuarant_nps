@@ -10,7 +10,7 @@
 			<div class="metadata">
             </div>
 			</ul>
-			
+
 
             @foreach($county->cities as $city)
             <ul class="list-inline-item">
@@ -27,7 +27,6 @@
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $county->admin->id)
 					<div class="actions">
 						{{-- <a href="{{ route('counties.create') }}" class="btn btn-dark">Create new county</a> --}}
 
@@ -41,7 +40,6 @@
 
 							<button type="submit" class="btn btn-danger">Delete county</button>
 						</form>
-				@endif
 			@endauth
 		</div>
 	</article>

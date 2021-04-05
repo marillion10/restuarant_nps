@@ -36,7 +36,6 @@
 
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $restaurant->admin->id)
 					<div class="actions">
 						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-success">Edit restaurant</a>
 
@@ -47,7 +46,6 @@
 							<button type="submit" class="btn btn-danger">Delete restaurant</button>
 						</form>
 					</div>
-				@endif
 			@endauth
 		</div>
 	</article>

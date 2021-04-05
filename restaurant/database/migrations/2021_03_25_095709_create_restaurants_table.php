@@ -21,6 +21,8 @@ class CreateRestaurantsTable extends Migration
             $table->bigInteger('admin_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
             $table->timestamps();
+
+            $table->unique('name');
         });
     }
 

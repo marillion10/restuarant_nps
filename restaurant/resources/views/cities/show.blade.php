@@ -8,8 +8,6 @@
 			<h5 class="card-title">{{ $city->name }}</h5>
 
 			@foreach($city->restaurants as $restaurant)
-			<article class="card">
-				<div class="card-body">
 					<h5 class="card-title h5"><a href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
 					<div class="metadata">
 						<ul class="list-inline">
@@ -20,12 +18,12 @@
 								{!!
 									$restaurant->tags->map(
 										function($tag) {
-											return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
+											return '<a href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
 										}
 									)->implode(", ")
 								 !!}
 							</li>
-							
+
 						</ul>
 					</div>
 
@@ -36,7 +34,6 @@
             @endforeach
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the cities admin -->
 			@auth
-				@if(Illuminate\Support\Facades\Auth::user()->id === $city->admin->id)
 					<div class="actions">
 
                             <a href="/cities/{{ $city->id }}/restaurants/create" class="btn btn-dark">Create a new restaurant</a>
@@ -50,10 +47,8 @@
 							<button type="submit" class="btn btn-danger">Delete city</button>
 						</form>
 					</div>
-				@endif
 			@endauth
-		</div>
-	</article>
+
 
 	<div class="mt-4">
 		<a href="{{ route('cities.index') }}" class="btn btn-dark">Back to cities</a>

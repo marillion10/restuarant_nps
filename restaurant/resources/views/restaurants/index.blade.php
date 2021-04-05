@@ -12,16 +12,16 @@
 						<li class="list-inline-item">Date: {{$restaurant->created_at}} </li>
 						<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
 						<li class="list-inline-item">
-							Tag:
+						    Categories:
 							{!!
 								$restaurant->tags->map(
 									function($tag) {
-										return '<a href="/restaurants/tags/' . $tag->id . '">' . $tag->name . '</a>';
+										return '<a href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
 									}
 								)->implode(", ")
 							 !!}
 						</li>
-						
+
 					</ul>
 				</div>
 
@@ -29,7 +29,7 @@
 					@if(empty($restaurant->excerpt))
 					{{substr($restaurant->description, 0, 100) }}...
 					@else
-					{{ $restaurant->excerpt}}	
+					{{ $restaurant->excerpt}}
 					@endif
 				</p>
 
