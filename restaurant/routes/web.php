@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\RestaurantController;
@@ -27,18 +26,16 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 Route::resource('/counties/{county}/cities', CityController::class);
-Route::resource('tags/{tag}/cities', TagController::class);
+Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 
+Route::get('/cities/{city}/tags/{tag}', [CityController::class, 'showByTag'])->name('cities.show.tag');
 
 
 Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
-Route::resource('tags', TagController::class);
-
-
+Route::resource('/tags', TagController::class);
 
 Route::middleware(['auth'])->group(function() {
 });

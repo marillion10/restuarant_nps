@@ -11,16 +11,16 @@
 			<!-- Left Side Of Navbar -->
 			<ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('restaurants.index')}}">Restaurants</a>
+                    <a class="nav-link" href="{{ route('restaurants.index')}}">Restauranger</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cities.index')}}">Cities</a>
+                    <a class="nav-link" href="{{ route('cities.index')}}">Städer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('counties.index')}}">Counties</a>
+                    <a class="nav-link" href="{{ route('counties.index')}}">Län</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('tags.index')}}">Categories</a>
+                    <a class="nav-link" href="{{ route('tags.index')}}">Kategorier</a>
                 </li>
 			</ul>
 

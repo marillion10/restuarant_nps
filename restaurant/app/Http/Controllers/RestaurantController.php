@@ -32,8 +32,6 @@ class RestaurantController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
-
-
 		return view('restaurants/create', [
             'city'=>$city, 'tags' => Tag::orderby('name')->get()]);
     }
@@ -55,6 +53,7 @@ class RestaurantController extends Controller
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
+			'tel' => $request->input('tel'),
 			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
 		]);

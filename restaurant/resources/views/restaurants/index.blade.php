@@ -1,39 +1,33 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-dark">Restaurants</h1>
+	<h1 class="text-light">Restauranger</h1>
 
 	@foreach($restaurants as $restaurant)
-		<article class="card">
-			<div class="card-body">
-				<h5 class="card-title h5"><a href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
+		<article class="card border-0">
+			<div class="card-body bg-dark text-white">
+				<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
 				<div class="metadata">
 					<ul class="list-inline">
-						<li class="list-inline-item">Date: {{$restaurant->created_at}} </li>
 						<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
+						<li class="list-inline-item">Telefon: {{$restaurant->tel}} </li>
 						<li class="list-inline-item">
-						    Categories:
+						    Kategorier:
 							{!!
 								$restaurant->tags->map(
 									function($tag) {
-										return '<a href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
+										return '<a class="text-decoration-none" href="/tags/' . $tag->id . '">' . $tag->name . '</a>';
 									}
-								)->implode(", ")
+								)->implode("   ")
 							 !!}
 						</li>
 
 					</ul>
 				</div>
 
-				<p class="excerpt">
-					@if(empty($restaurant->excerpt))
-					{{substr($restaurant->description, 0, 100) }}...
-					@else
-					{{ $restaurant->excerpt}}
-					@endif
-				</p>
 
-				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-success">Read more &raquo;</a>
+
+				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-secondary">Läs mer &raquo;</a>
 
 			</div>
 		</article>

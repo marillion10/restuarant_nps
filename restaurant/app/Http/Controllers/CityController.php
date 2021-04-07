@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\County;
+use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,17 @@ class CityController extends Controller
         return view('cities/index', [
 			'cities' => city::all(),
 		]);
+    }
+
+    public function showByTag(City $city, Tag $tag) {
+
+        $restaurants_with_tag = $city->restaurants()->whereHas('tags', function (\Illuminate\Database\Eloquent\Builder $query) use($tag) {
+        $query->where('tags.id', $tag->id);
+    })
+    ->get();
+
+        return view('cities/show_by_tag', ['tag' => $tag, 'city' => $city, 'restaurants_with_tag' => $restaurants_with_tag]);
+
     }
 
     /**
@@ -74,7 +86,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        return view('cities/show', ['city' => $city]);
+        return view('cities/show', ['city' => $city, 'tags' => Tag::orderby('name')->get()]);
 
     }
 
@@ -86,7 +98,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this city.');
+        abort_unless(Auth::check(), 401, 'You must be logged in as admin to edit city.');
 
 		return view('cities/edit', ['city' => $city]);
     }

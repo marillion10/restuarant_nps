@@ -21,6 +21,7 @@ class City extends Model
 	 * Get the User that this Article is written by.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function admin() {
