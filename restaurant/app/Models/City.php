@@ -36,8 +36,4 @@ class City extends Model
 		return $this->belongsTo(County::class);
 	}
 
-    public function Tags() {
-		return $this->belongsToMany(Tag::class);
-	}
-
 }
