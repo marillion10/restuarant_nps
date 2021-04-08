@@ -22,9 +22,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('tags.index')}}">Kategorier</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('restaurant.send.suggestion')}}">Skicka förslag</a>
-                </li>
 			</ul>
 
 			<!-- Right Side Of Navbar -->
