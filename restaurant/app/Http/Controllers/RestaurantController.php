@@ -22,7 +22,6 @@ class RestaurantController extends Controller
 			'restaurants' => Restaurant::all(),
 		]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

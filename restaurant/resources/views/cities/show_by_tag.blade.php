@@ -3,10 +3,10 @@
 @section('content')
 	<h1 class="text-light">Restauranger som erbjuder {{ $tag->name }} </h1>
 
-			@foreach($restaurants_with_tag as $restaurant)
+			@foreach($restaurants as $restaurant)
 
 					<h5 class="card-title h5"><a class="text-decoration-none text-light" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">{{ $restaurant->name }}</a></h5>
-                    
+
             @endforeach
 
 

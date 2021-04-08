@@ -31,7 +31,6 @@ Route::resource('/cities/{city}/restaurants', RestaurantController::class);
 
 Route::get('/cities/{city}/tags/{tag}', [CityController::class, 'showByTag'])->name('cities.show.tag');
 
-
 Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);

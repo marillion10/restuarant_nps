@@ -26,12 +26,12 @@ class CityController extends Controller
 
     public function showByTag(City $city, Tag $tag) {
 
-        $restaurants_with_tag = $city->restaurants()->whereHas('tags', function (\Illuminate\Database\Eloquent\Builder $query) use($tag) {
+        $restaurants = $city->restaurants()->whereHas('tags', function (\Illuminate\Database\Eloquent\Builder $query) use($tag) {
         $query->where('tags.id', $tag->id);
     })
     ->get();
 
-        return view('cities/show_by_tag', ['tag' => $tag, 'city' => $city, 'restaurants_with_tag' => $restaurants_with_tag]);
+        return view('cities/show_by_tag', ['tag' => $tag, 'city' => $city, 'restaurants' => $restaurants]);
 
     }
 
