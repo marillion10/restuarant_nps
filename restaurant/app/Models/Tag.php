@@ -24,8 +24,4 @@ class Tag extends Model
     public function restaurants() {
 		return $this->belongsToMany(Restaurant::class);
 	}
-
-    public function cities() {
-		return $this->belongsToMany(City::class);
-	}
 }

@@ -19,7 +19,7 @@ class RestaurantController extends Controller
     public function index()
     {
         return view('restaurants/index', [
-			'restaurants' => Restaurant::all(),
+			'restaurants' => Restaurant::with('tags')->get(),
 		]);
     }
     /**
@@ -73,6 +73,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        
         return view('restaurants/show', ['restaurant' => $restaurant]);
     }
 

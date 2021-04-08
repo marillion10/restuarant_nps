@@ -20,7 +20,7 @@ class CityController extends Controller
     public function index()
     {
         return view('cities/index', [
-			'cities' => city::all(),
+			'cities' => City::all(),
 		]);
     }
 
