@@ -1,37 +1,48 @@
 @extends('layouts/app')
 
 @section('content')
-	<h1 class="text-dark">Edit a restaurant</h1>
+	<h1 class="text-light">Redigera restaurang</h1>
 
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title">Edit restaurant</h5>
+	<div class="card border-0">
+		<div class="card-body bg-dark text-white">
+			<h5 class="card-title">Redigera restaurang</h5>
 
 			<form class="form" action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="POST">
 				@csrf
 				@method('PUT')
 
 				<div class="mb-3">
-					<label for="name" class="form-label">Name</label>
-					<input type="name" id="name" name="name" class="form-control" placeholder="Enter the name of your restaurant" value="{{ $restaurant->name }}" required>
+					<label for="name" class="form-label">Namn</label>
+					<input type="name" id="name" name="name" class="form-control" placeholder="Skriv namnet på restaurangen" value="{{ $restaurant->name }}" required>
 				</div>
 
 				<div class="mb-3">
-					<label for="address" class="form-label">Address</label>
+					<label for="address" class="form-label">Adress</label>
 					<textarea id="address" name="address" class="form-control">{{ $restaurant->address }}</textarea>
 				</div>
 
                 <div class="mb-3">
-					<label for="description" class="form-label">Description</label>
+					<label for="description" class="form-label">Beskrivning</label>
 					<textarea id="description" name="description" class="form-control" rows="10">{{ $restaurant->description }}</textarea>
 				</div>
 
-				<button type="submit" class="btn btn-success w-100">Update</button>
+				<fieldset class="mb-3">
+					<legend>Kategorier</legend>
+
+					@foreach($tags as $tag)
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" @if($restaurant->tags->contains($tag))checked @endif>
+							<label class="form-check-label" for="tag_{{ $tag->id }}">{{ $tag->name }}</label>
+						</div>
+					@endforeach
+				</fieldset>
+
+				<button type="submit" class="btn btn-primary w-100">Uppdatera</button>
 			</form>
 		</div>
 	</div>
 
 	<div class="mt-4">
-		<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-secondary">&laquo; Back to restaurant</a>
+		<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-secondary">&laquo; Tillbaka</a>
 	</div>
 @endsection

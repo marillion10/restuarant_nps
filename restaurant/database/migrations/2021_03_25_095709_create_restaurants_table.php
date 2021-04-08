@@ -17,10 +17,13 @@ class CreateRestaurantsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->string('tel');
             $table->string('description');
             $table->bigInteger('admin_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
             $table->timestamps();
+
+            $table->unique('name');
         });
     }
 

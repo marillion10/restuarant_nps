@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
 			AdminSeeder::class,
-			CountySeeder::class,
 			CitySeeder::class,
-			CategorySeeder::class,
+			CountySeeder::class,
 			RestaurantSeeder::class,
+			TagSeeder::class,
 		]);
 
 		// \App\Models\User::factory(10)->create();

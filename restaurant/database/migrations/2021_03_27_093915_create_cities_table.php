@@ -20,6 +20,8 @@ class CreateCitiesTable extends Migration
             $table->bigInteger('admin_id')->unsigned();
             $table->bigInteger('county_id')->unsigned();
             $table->timestamps();
+
+            $table->unique('name');
         });
     }
 

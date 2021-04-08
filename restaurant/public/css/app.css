@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito');
 @charset "UTF-8";
 /*!
  * Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
@@ -10839,8 +10839,8 @@ article {
   margin-bottom: 1rem;
 }
 article.single-article .excerpt {
-  font-style: italic;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 400;
 }
 article .actions {
   display: flex;
@@ -10853,5 +10853,6 @@ article .actions > *:last-child {
 }
 
 body {
-  background-color: #fff;
+  background-image: url("/images/restaurant2.jpg");
+  background-size: cover;
 }

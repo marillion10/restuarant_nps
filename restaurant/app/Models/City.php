@@ -21,6 +21,7 @@ class City extends Model
 	 * Get the User that this Article is written by.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function admin() {
@@ -33,6 +34,10 @@ class City extends Model
 
     public function county() {
 		return $this->belongsTo(County::class);
+	}
+
+    public function Tags() {
+		return $this->belongsToMany(Tag::class);
 	}
 
 }
