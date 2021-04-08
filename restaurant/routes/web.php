@@ -4,6 +4,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\SuggestionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,7 @@ Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
 Route::resource('/tags', TagController::class);
+Route::resource('/suggestions', SuggestionController::class);
 
 Route::middleware(['auth'])->group(function() {
 });
