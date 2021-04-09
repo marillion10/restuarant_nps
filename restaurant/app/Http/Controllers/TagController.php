@@ -120,7 +120,8 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this category.');
-
+    
+    $tag->restaurants()->delete();
 		$tag->delete();
 
 		return redirect()->route('tags.index')->with('success', 'tag has been deleted');

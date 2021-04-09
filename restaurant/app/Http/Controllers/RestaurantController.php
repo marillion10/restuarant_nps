@@ -61,19 +61,20 @@ class RestaurantController extends Controller
 		$restaurant->tags()->attach($request->input('tags'));
 
         // redirect user to the nowly created restaurant
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])
+		return redirect()->route('restaurants.show', ['restaurant' => $restaurant->slug])
 			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Restaurant  $restaurant
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
-    {
-        
+    public function show($slug)
+    {   
+        $restaurant = $this->getRestaurantBySlug($slug);
+
         return view('restaurants/show', ['restaurant' => $restaurant]);
     }
 
@@ -83,8 +84,10 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit($slug)
     {
+        $restaurant = $this->getRestaurantBySlug($slug);
+
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this restaurant.');
 
 		return view('restaurants/edit', ['restaurant' => $restaurant, 'tags' => Tag::orderby('name')->get()]);
@@ -97,8 +100,10 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request, $slug)
     {
+        $restaurant = $this->getRestaurantBySlug($slug);
+
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this article.');
 
         // bail validation if no name is set
@@ -118,7 +123,7 @@ class RestaurantController extends Controller
 
 
         //redirect user to the updated restaurant
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant])->with('success', 'restaurant updated.');
+		return redirect()->route('restaurants.show', ['restaurant' => $restaurant->slug])->with('success', 'restaurant updated.');
     }
 
     /**
@@ -127,13 +132,22 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy($slug)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete this restaurant.');
 
+        $restaurant = $this->getRestaurantBySlug($slug);
+        
+        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete 
+        this restaurant.');
+      
         $restaurant->tags()->sync([]);
+        
 		$restaurant->delete();
 
 		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');
+    }
+
+    public function getRestaurantBySlug($slug){
+        return Restaurant::where('slug', $slug)->firstOrFail();
     }
 }

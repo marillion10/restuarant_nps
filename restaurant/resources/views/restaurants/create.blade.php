@@ -4,7 +4,7 @@
 	<h1 class="text-light">Skapa restaurang</h1>
     <h2 class="mb-3 text-light">{{ $city->name }}</h1>
 
-	        <form class="form bg-dark text-white pt-3" action="/cities/{{ $city->id }}/restaurants" method="POST">
+	        <form class="form bg-dark text-white pt-3" action="{{ route('restaurants.store') }}" method="POST">
 				@csrf
 
                 <input type="hidden" name="city_id" value="{{$city->id}}">
@@ -44,6 +44,6 @@
 			</form>
 
             <div class="mt-5">
-                <a href="/cities/{{ $city->id }}" class="btn btn-secondary">&laquo; Tillbaka</a>
+                <a href="{{ route('restaurants.index') }}" class="btn btn-secondary">&laquo; Tillbaka</a>
             </div>
     @endsection

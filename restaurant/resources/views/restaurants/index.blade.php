@@ -6,7 +6,7 @@
 	@foreach($restaurants as $restaurant)
 		<article class="card border-0">
 			<div class="card-body bg-dark text-white">
-				<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
+				<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant->slug]) }}">{{ $restaurant->name }}</a></h5>
 				<div class="metadata">
 					<ul class="list-inline">
 						<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
@@ -27,7 +27,7 @@
 
 
 
-				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-secondary">Läs mer &raquo;</a>
+				<a href="{{ route('restaurants.show', ['restaurant' => $restaurant->slug]) }}" class="btn btn-secondary">Läs mer &raquo;</a>
 
 			</div>
 		</article>
