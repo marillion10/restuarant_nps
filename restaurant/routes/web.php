@@ -28,11 +28,11 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/counties/{county}/cities', CityController::class);
-Route::resource('/cities/{city}/restaurants', RestaurantController::class);
+Route::resource('/cities/{city}/restaurants', RestaurantController::class)->except('index');
 
 Route::get('/cities/{city}/tags/{tag}', [CityController::class, 'showByTag'])->name('cities.show.tag');
 
-Route::resource('/restaurants', RestaurantController::class);
+Route::resource('/restaurants', RestaurantController::class)->only(['index']);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
 Route::resource('/tags', TagController::class);

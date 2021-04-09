@@ -69,7 +69,7 @@ class CountyController extends Controller
      * @param  \App\Models\County  $county
      * @return \Illuminate\Http\Response
      */
-    public function show(County $county)
+    public function show(County $county )
     {
         return view('counties/show', ['county' => $county]);
 

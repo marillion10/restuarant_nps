@@ -7,7 +7,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Redigera stad</h5>
 
-			<form class="form" action="{{ route('cities.update', ['city' => $city]) }}" method="POST">
+			<form class="form" action="{{ route('cities.update', ['city' => $city->slug]) }}" method="POST">
 				@csrf
 				@method('PUT')
 
@@ -22,6 +22,6 @@
 	</div>
 
 	<div class="mt-4">
-		<a href="{{ route('cities.show', ['city' => $city]) }}" class="btn btn-secondary">&laquo; Tillbaka till städer</a>
+		<a href="{{ route('cities.show', ['city' => $city->slug]) }}" class="btn btn-secondary">&laquo; Tillbaka till städer</a>
 	</div>
 @endsection

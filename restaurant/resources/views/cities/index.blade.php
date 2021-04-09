@@ -10,7 +10,7 @@
 				<h5 class="card-title">{{ $city->name }}</h5>
 
 <p>
-				<a href="{{ route('cities.show', ['city' => $city]) }}" class="btn btn-secondary">Se restauranger i {{ $city->name }} &raquo;</a>
+				<a href="{{ route('cities.show', ['city' => $city->slug]) }}" class="btn btn-secondary">Se restauranger i {{ $city->name }} &raquo;</a>
 			</div>
 		</article>
 

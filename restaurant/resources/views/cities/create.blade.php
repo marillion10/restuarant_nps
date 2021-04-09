@@ -7,7 +7,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Skapa stad</h5>
 
-	        <form class="form" action="/counties/{{ $county->id }}/cities" method="POST">
+	        <form class="form" action="{{ route('cities.store', ['county' => $county])}}" method="POST">
 				@csrf
 
                 <input type="hidden" name="county_id" value="{{$county->id}}">

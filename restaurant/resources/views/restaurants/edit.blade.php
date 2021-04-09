@@ -7,7 +7,7 @@
 		<div class="card-body bg-dark text-white">
 			<h5 class="card-title">Redigera restaurang</h5>
 
-			<form class="form" action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="POST">
+			<form class="form" action="{{ route('restaurants.update', ['city' => $city, 'restaurant' => $restaurant]) }}" method="POST">
 				@csrf
 				@method('PUT')
 
@@ -43,6 +43,6 @@
 	</div>
 
 	<div class="mt-4">
-		<a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-secondary">&laquo; Tillbaka</a>
+		<a href="{{ route('restaurants.show', ['city' => $city, 'restaurant' => $restaurant]) }}" class="btn btn-secondary">&laquo; Tillbaka</a>
 	</div>
 @endsection

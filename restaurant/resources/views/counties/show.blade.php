@@ -30,7 +30,7 @@
 					<div class="actions">
 						{{-- <a href="{{ route('counties.create') }}" class="btn btn-dark">Create new county</a> --}}
 
-                        <a href="/counties/{{ $county->id }}/cities/create" class="btn btn-secondary">Skapa ny stad</a>
+                        <a href="{{ route('cities.create') }}" class="btn btn-secondary">Skapa ny stad</a>
 
 						<a href="{{ route('counties.edit', ['county' => $county]) }}" class="btn btn-primary">Redigera län</a>
 

@@ -96,7 +96,7 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, Tag $tag, City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this category.');
 
@@ -108,7 +108,7 @@ class TagController extends Controller
 			'name' => $request->input('name'),
 		]);
 
-		return redirect()->route('tags.show', ['tag' => $tag])->with('success', 'category updated.');
+		return redirect()->route('tags.show', ['city' => $city, 'tag' => $tag])->with('success', 'category updated.');
     }
 
     /**

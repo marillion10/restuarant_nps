@@ -16,7 +16,7 @@
 
 		<div class="card-body">
 			@foreach($city->restaurants as $restaurant)
-					<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
+					<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['city' => $city, 'restaurant' => $restaurant]) }}">{{ $restaurant->name }}</a></h5>
 					<div class="metadata">
 						<ul class="list-inline">
 							<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
@@ -44,11 +44,11 @@
 			@auth
 					<div class="actions">
 
-                            <a href="/cities/{{ $city->id }}/restaurants/create" class="btn btn-secondary">Skapa ny restaurang</a>
+                            <a href="{{ route('restaurants.create', ['city' => $city->slug]) }}" class="btn btn-secondary">Skapa ny restaurang</a>
 
-						<a href="{{ route('cities.edit', ['city' => $city]) }}" class="btn btn-primary">Redigera stad</a>
+						<a href="{{ route('cities.edit', ['city' => $city->slug]) }}" class="btn btn-primary">Redigera stad</a>
 
-						<form action="{{ route('cities.destroy', ['city' => $city]) }}" method="POST">
+						<form action="{{ route('cities.destroy', ['city' => $city->slug]) }}" method="POST">
 							@csrf
 							@method('DELETE')
 

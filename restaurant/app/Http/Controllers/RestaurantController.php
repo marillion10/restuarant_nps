@@ -30,7 +30,7 @@ class RestaurantController extends Controller
     public function create(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
-
+        
 		return view('restaurants/create', [
             'city'=>$city, 'tags' => Tag::orderby('name')->get()]);
     }
@@ -41,27 +41,28 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a restaurant.');
 
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a name for the restaurant.');
 		}
-
+        
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
 			'tel' => $request->input('tel'),
 			'city_id' => $request->input('city_id'),
 			'description' => $request->input('description'),
+			
 		]);
-
+        
         // attach selected tags to restaurant
 		$restaurant->tags()->attach($request->input('tags'));
 
         // redirect user to the nowly created restaurant
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant->slug])
+		return redirect()->route('restaurants.show', ['city' => $city, 'restaurant' => $restaurant->slug])
 			->with("success", "Restaurant successfully created with ID {$restaurant->id}.");
     }
 
@@ -71,11 +72,10 @@ class RestaurantController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(City $city, Restaurant $restaurant)
     {   
-        $restaurant = $this->getRestaurantBySlug($slug);
-
-        return view('restaurants/show', ['restaurant' => $restaurant]);
+        
+        return view('restaurants/show', ['city' => $city, 'restaurant' => $restaurant]);
     }
 
     /**
@@ -84,13 +84,13 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(City $city, Restaurant $restaurant)
     {
-        $restaurant = $this->getRestaurantBySlug($slug);
+        
 
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this restaurant.');
 
-		return view('restaurants/edit', ['restaurant' => $restaurant, 'tags' => Tag::orderby('name')->get()]);
+		return view('restaurants/edit', ['city' => $city, 'restaurant' => $restaurant, 'tags' => Tag::orderby('name')->get()]);
     }
 
     /**
@@ -100,9 +100,9 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, City $city, Restaurant $restaurant)
     {
-        $restaurant = $this->getRestaurantBySlug($slug);
+        
 
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this article.');
 
@@ -111,11 +111,13 @@ class RestaurantController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a title for the restaurant.');
 		}
 
+        
         // update restaurant with form content
 		$restaurant->update([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
 			'description' => $request->input('description'),
+			'slug' => $request->input('slug'),
 		]);
 
         //sync selected tags to restaurant (remove those existing but not present in form reques, add those not existing but present in form request)
@@ -123,7 +125,7 @@ class RestaurantController extends Controller
 
 
         //redirect user to the updated restaurant
-		return redirect()->route('restaurants.show', ['restaurant' => $restaurant->slug])->with('success', 'restaurant updated.');
+		return redirect()->route('restaurants.show', ['city' => $city, 'restaurant' => $restaurant])->with('success', 'restaurant updated.');
     }
 
     /**
@@ -132,10 +134,8 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy(City $city, Restaurant $restaurant)
     {
-
-        $restaurant = $this->getRestaurantBySlug($slug);
         
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete 
         this restaurant.');
@@ -147,7 +147,4 @@ class RestaurantController extends Controller
 		return redirect()->route('restaurants.index')->with('success', 'Restaurant has been deleted');
     }
 
-    public function getRestaurantBySlug($slug){
-        return Restaurant::where('slug', $slug)->firstOrFail();
-    }
 }

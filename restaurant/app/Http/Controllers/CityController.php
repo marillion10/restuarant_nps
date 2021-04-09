@@ -31,7 +31,7 @@ class CityController extends Controller
     })
     ->get();
 
-        return view('cities/show_by_tag', ['tag' => $tag, 'city' => $city, 'restaurants' => $restaurants]);
+        return view('cities.show.tag', ['tag' => $tag, 'city' => $city, 'restaurants' => $restaurants]);
 
     }
 
@@ -73,9 +73,12 @@ class CityController extends Controller
 		$city = Auth::user()->cities()->create([
 			'name' => $request->input('name'),
 			'county_id' => $request->input('county_id'),
+			
 		]);
 
-		return redirect()->route('cities.show', ['city' => $city]);
+    
+
+		return redirect()->route('cities.show', ['city' => $city->slug]);
     }
 
     /**
@@ -84,8 +87,11 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show($slug)
     {
+
+        $city = $this->getRestaurantBySlug($slug);
+
         return view('cities/show', ['city' => $city, 'tags' => Tag::orderby('name')->get()]);
 
     }
@@ -96,8 +102,10 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit($slug)
     {
+        $city = $this->getRestaurantBySlug($slug);
+
         abort_unless(Auth::check(), 401, 'You must be logged in as admin to edit city.');
 
 		return view('cities/edit', ['city' => $city]);
@@ -110,7 +118,7 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, $slug)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to edit this city.');
 
@@ -118,11 +126,14 @@ class CityController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a title for the city.');
 		}
 
+        $city = $this->getRestaurantBySlug($slug);
+
 		$city->update([
 			'name' => $request->input('name'),
+			'slug' => $request->input('slug'),
 		]);
 
-		return redirect()->route('cities.show', ['city' => $city])->with('success', 'city updated.');
+		return redirect()->route('cities.show', ['city' => $city->slug])->with('success', 'city updated.');
     }
 
     /**
@@ -131,12 +142,18 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy($slug)
     {
+        $city = $this->getRestaurantBySlug($slug);
+
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete this city.');
 
 		$city->delete();
 
 		return redirect()->route('cities.index')->with('success', 'City has been deleted');
+    }
+
+    public function getRestaurantBySlug($slug){
+        return City::where('slug', $slug)->firstOrFail();
     }
 }

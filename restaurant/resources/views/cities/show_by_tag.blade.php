@@ -5,7 +5,7 @@
 
 			@foreach($restaurants as $restaurant)
 
-					<h5 class="card-title h5"><a class="text-decoration-none text-light" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">{{ $restaurant->name }}</a></h5>
+					<h5 class="card-title h5"><a class="text-decoration-none text-light" href="{{ route('restaurants.show', ['city' => $city, restaurant' => $restaurant]) }}">{{ $restaurant->name }}</a></h5>
 
             @endforeach
 
