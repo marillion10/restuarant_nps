@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function tags() {
 		return $this->hasMany(Tag::class, 'admin_id');
 	}
+    public function links() {
+		return $this->hasMany(Link::class, 'admin_id');
+	}
 }

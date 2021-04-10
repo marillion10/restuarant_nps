@@ -38,4 +38,8 @@ class Restaurant extends Model
 		return $this->belongsToMany(Tag::class);
 	}
 
+    public function link() {
+		return $this->belongsTo(Link::class);
+	}
+
 }

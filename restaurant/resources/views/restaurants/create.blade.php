@@ -30,6 +30,16 @@
 				</div>
 
                 <fieldset class="mb-3 ps-4 pe-4">
+					<legend>Länkar</legend>
+                    <label class="form-check-label">Website</label>
+                    <input type="url" name="website" id="website">
+                    <label class="form-check-label">Facebook</label>
+                    <input type="url" name="facebook" id="facebook">
+                    <label class="form-check-label">e-mail</label>
+                    <input type="url" name="email" id="email">
+				</fieldset>
+
+                <fieldset class="mb-3 ps-4 pe-4">
 					<legend>Kategorier</legend>
 
 					@foreach($tags as $tag)
