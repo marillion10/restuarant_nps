@@ -9,7 +9,7 @@
 
 			<form class="form" action="{{ route('links.store') }}" method="POST">
 				@csrf
-            <input type="hidden" name="restaurant_id" value="{{1}}">
+            <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
 
 				<div class="mb-3">
 					<label for="desc" class="form-label">Länk beskrivning</label>

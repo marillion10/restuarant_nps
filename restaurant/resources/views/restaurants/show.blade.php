@@ -37,6 +37,9 @@
 			<!-- check if someone is logged in, and if so, check if the authenticated user is the same as the articles admin -->
 			@auth
 					<div class="actions">
+
+                        <a href="{{ route('links.create', ['restaurant' => $restaurant]) }}" class="btn btn-dark">skapa en ny länk</a>
+
 						<a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-primary">Redigera restaurang</a>
 
 						<form action="{{ route('restaurants.destroy', ['restaurant' => $restaurant]) }}" method="POST">

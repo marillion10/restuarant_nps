@@ -12,8 +12,10 @@
 				@method('PUT')
 
 				<div class="mb-3">
-					<label for="name" class="form-label">Länktyp</label>
-					<input type="name" id="name" name="name" class="form-control" placeholder="Skriv namnet på länktyp" value="{{ $link->name }}" required>
+                    <label for="desc" class="form-label">Länk beskrivning</label>
+                    <input type="desc" id="desc" name="desc" class="form-control" placeholder="Skriv in desc" value="{{$link->desc}}" >
+                    <label for="name" class="form-label">URL</label>
+					<input type="url" id="url" name="url" class="form-control" placeholder="Skriv in länk" value="{{$link->url}}">
 				</div>
 
 				<button type="submit" class="btn btn-primary w-100">Uppdatera</button>

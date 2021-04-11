@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Linktype extends Model
 {
+    	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 *
+	 */
 	/**
 	 *
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 
     public function links() {
-        return $this->belongsTo(Link::class);
+        return $this->hasMany(Link::class);
     }
 }

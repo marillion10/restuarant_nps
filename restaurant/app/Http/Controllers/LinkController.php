@@ -87,7 +87,9 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this link.');
+
+		return view('links/edit', ['link' => $link]);
     }
 
     /**
@@ -99,7 +101,18 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this link.');
+
+		if (!$request->filled('desc')) {
+			return redirect()->back()->with('warning', 'Please enter a desc for the link.');
+		}
+
+		$link->update([
+            'desc' => $request->input('desc'),
+            'url' => $request->input('url'),
+		]);
+
+		return redirect()->route('links.show', ['link' => $link])->with('success', 'link updated.');
     }
 
     /**
@@ -110,6 +123,10 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this link.');
+
+		$link->delete();
+
+		return redirect()->route('links.index')->with('success', 'link has been deleted');
     }
 }
