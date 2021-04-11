@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'de3651719a133cea04216988dee14a0670e92a96',
+    'reference' => '3b32d2758881538b56119331c2a5ae839ccfe461',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -55,12 +55,12 @@ private static $installed = array (
     ),
     'barryvdh/laravel-ide-helper' => 
     array (
-      'pretty_version' => 'v2.9.2',
-      'version' => '2.9.2.0',
+      'pretty_version' => 'v2.10.0',
+      'version' => '2.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c8ebf563a003e41becf9cfe30a7ff69e15e45c23',
+      'reference' => '73b1012b927633a1b4cd623c2e6b1678e6faef08',
     ),
     'barryvdh/reflection-docblock' => 
     array (
@@ -586,7 +586,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'de3651719a133cea04216988dee14a0670e92a96',
+      'reference' => '3b32d2758881538b56119331c2a5ae839ccfe461',
     ),
     'laravel/sail' => 
     array (

@@ -145,17 +145,17 @@
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.9.2",
-            "version_normalized": "2.9.2.0",
+            "version": "v2.10.0",
+            "version_normalized": "2.10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "c8ebf563a003e41becf9cfe30a7ff69e15e45c23"
+                "reference": "73b1012b927633a1b4cd623c2e6b1678e6faef08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/c8ebf563a003e41becf9cfe30a7ff69e15e45c23",
-                "reference": "c8ebf563a003e41becf9cfe30a7ff69e15e45c23",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/73b1012b927633a1b4cd623c2e6b1678e6faef08",
+                "reference": "73b1012b927633a1b4cd623c2e6b1678e6faef08",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
             "suggest": {
                 "illuminate/events": "Required for automatic helper generation (^6|^7|^8)."
             },
-            "time": "2021-04-01T18:56:14+00:00",
+            "time": "2021-04-09T06:17:55+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -226,7 +226,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-ide-helper/issues",
-                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/v2.9.2"
+                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/v2.10.0"
             },
             "funding": [
                 {

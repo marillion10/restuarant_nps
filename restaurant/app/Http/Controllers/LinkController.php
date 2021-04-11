@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Link;
-use App\Models\City;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,12 +45,12 @@ class LinkController extends Controller
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in to create a link.');
 
-		if (!$request->filled('name')) {
-			return redirect()->back()->with('warning', 'Please enter a county for a link.');
+		if (!$request->filled('desc')) {
+			return redirect()->back()->with('warning', 'Please enter a link.');
 		}
 
         $validator = Validator::make($request->all(), [
-            'name' => 'unique:links'
+            'desc' => 'unique:links'
 
           ]);
 
@@ -59,8 +58,11 @@ class LinkController extends Controller
             return redirect()->back()->with('warning', 'Link already exists choose another name');
           }
 
-		$link = Auth::user()->links()->create([
-			'name' => $request->input('name'),
+		$link = Link::create([
+			'desc' => $request->input('desc'),
+            'linktype_id' => $request->input('linktype_id'),
+            'restaurant_id' => $request->input('restaurant_id'),
+            'url' => $request->input('url'),
 		]);
 
 		return redirect()->route('links.show', ['link' => $link]);
@@ -72,9 +74,9 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function show(Link $link)
+    public function show(Link $link, Restaurant $restaurant)
     {
-        return view('links/show', ['link' => $link]);
+        return view('links/show', ['link' => $link, 'restaurant' => $restaurant]);
     }
 
     /**
@@ -85,9 +87,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this link.');
-
-		return view('links/edit', ['link' => $link]);
+        //
     }
 
     /**
@@ -99,17 +99,7 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this link.');
-
-		if (!$request->filled('name')) {
-			return redirect()->back()->with('warning', 'Please enter a name for the link.');
-		}
-
-		$link->update([
-			'name' => $request->input('name'),
-		]);
-
-		return redirect()->route('links.show', ['link' => $link])->with('success', 'link updated.');
+        //
     }
 
     /**
@@ -120,10 +110,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this link.');
-
-		$link->delete();
-
-		return redirect()->route('links.index')->with('success', 'link has been deleted');
+        //
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
@@ -13,14 +12,15 @@ class Link extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name',
-        'restaurant_id'
+		'url',
+		'desc',
+		'linktype_id',
+		'restaurant_id',
 	];
 
 	/**
 	 *
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
     public function admin() {
@@ -28,5 +28,8 @@ class Link extends Model
 	}
     public function restaurants() {
         return $this->hasMany(Restaurant::class);
+    }
+    public function linktypes() {
+        return $this->hasMany(Linktype::class);
     }
 }
