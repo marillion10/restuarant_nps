@@ -12,25 +12,15 @@
             @auth
 
 			<div class="actions">
-                
 				<a href="{{ route('links.edit', ['link' => $link]) }}" class="btn btn-primary">Redigera länkar</a>
 
 					<form action="{{ route('links.destroy', ['link' => $link]) }}" method="POST">
 							@csrf
 							@method('DELETE')
-
 						<button type="submit" class="btn btn-danger">Ta bort länkar</button>
 					</form>
 			</div>
             @endauth
 		</article>
-
-
 	@endforeach
-
- 	    @auth
-		    <div class="mt-4">
-			    <a href="/links/create" class="btn btn-dark">skapa en ny länk</a>
-		    </div>
-	    @endauth
 @endsection

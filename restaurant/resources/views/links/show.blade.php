@@ -7,4 +7,4 @@
     <div class="mt-4">
         <a href="{{ route('links.index') }}" class="btn btn-dark">Se länkar</a>
     </div>
-    @endsection
+@endsection

@@ -38,7 +38,7 @@ Route::resource('/restaurants', RestaurantController::class);
 Route::resource('/counties', CountyController::class);
 Route::resource('/cities', CityController::class);
 Route::resource('/tags', TagController::class);
-Route::resource('/links', LinkController::class)->except('create', 'update', 'destroy');
+Route::resource('/links', LinkController::class)->except('create');
 Route::resource('/suggestions', SuggestionController::class);
 
 Route::middleware(['auth'])->group(function() {
