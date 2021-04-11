@@ -21,7 +21,19 @@
 								)->implode("   ")
 							 !!}
 						</li>
-
+                        <p>
+                            <h3 class="h6">Länkar:</h3>
+                            @foreach ($links as $link)
+                            @if ( $link->restaurant_id === $restaurant->id)
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h5 class="text-decoration-none">{{$link->desc}}</h5>
+                                    <a class="text-decoration-none" href="{{$link->url}}">{{$link->url}}</a>
+                                </li>
+                            </ul>
+                            @endif
+                            @endforeach
+                            </p>
 					</ul>
 				</div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Link;
 use App\Models\Tag;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class RestaurantController extends Controller
     {
         return view('restaurants/index', [
 			'restaurants' => Restaurant::with('tags')->get(),
-		]);
+            'links' => Link::all()]);
     }
     /**
      * Show the form for creating a new resource.
@@ -73,8 +74,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        
-        return view('restaurants/show', ['restaurant' => $restaurant]);
+
+        return view('restaurants/show', ['restaurant' => $restaurant, 'links' => Link::all()]);
     }
 
     /**

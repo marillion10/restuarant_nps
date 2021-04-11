@@ -23,6 +23,7 @@ class Restaurant extends Model
 	/**
 	 * Get the User that this Article is written by.
 	 *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
@@ -30,7 +31,7 @@ class Restaurant extends Model
 		return $this->belongsTo(User::class);
 	}
 
-        public function city() {
+    public function city() {
         return $this->belongsTo(City::class);
     }
 
@@ -38,4 +39,7 @@ class Restaurant extends Model
 		return $this->belongsToMany(Tag::class);
 	}
 
+    public function links() {
+		return $this->hasMany(Link::class);
+	}
 }
