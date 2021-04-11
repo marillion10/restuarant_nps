@@ -7,7 +7,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Skapa Länkar</h5>
 
-			<form class="form" action="{{ route('links.store') }}" method="POST">
+			<form class="form" action="{{ route('links.store', ['restaurant' => $restaurant]) }}" method="POST">
 				@csrf
             <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
 

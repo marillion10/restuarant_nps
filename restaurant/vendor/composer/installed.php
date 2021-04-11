@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3b32d2758881538b56119331c2a5ae839ccfe461',
+    'reference' => 'd98f93b532561bb3a621fdfc7a6fe8a00467cc74',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -55,6 +55,15 @@
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'cocur/slugify' => 
+    array (
+      'pretty_version' => 'v4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3f1ffc300f164f23abe8b64ffb3f92d35cec8307',
     ),
     'composer/ca-bundle' => 
     array (
@@ -116,6 +125,15 @@
       array (
         0 => '*',
       ),
+    ),
+    'cviebrock/eloquent-sluggable' => 
+    array (
+      'pretty_version' => '8.0.5',
+      'version' => '8.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '69cd660715fc05a7e5a1cd51c88dc56128b0ca7e',
     ),
     'davedevelopment/hamcrest-php' => 
     array (
@@ -562,7 +580,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3b32d2758881538b56119331c2a5ae839ccfe461',
+      'reference' => 'd98f93b532561bb3a621fdfc7a6fe8a00467cc74',
     ),
     'laravel/sail' => 
     array (
