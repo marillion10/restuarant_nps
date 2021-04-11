@@ -19,11 +19,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('counties.index')}}">Län</a>
                 </li>
+				@auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('tags.index')}}">Kategorier</a>
                 </li>
-                <li class="nav-item">
+					<li class="nav-item">
                     <a class="nav-link" href="{{ route('links.index')}}">Länkar</a>
+				@endauth
                 </li>
 				<li class="nav-item">
                     <a class="nav-link" href="{{ route('suggestions.index')}}">Förslag på nya restauranger</a>

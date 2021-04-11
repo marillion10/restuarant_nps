@@ -43,5 +43,15 @@ class AdminSeeder extends Seeder
                 'password' => Hash::make('password3'),
         ]);
         }
+
+        if (User::where('email', 'jn@thehiveresistance.com')->doesntExist()) {
+
+            User::create( [
+        // Create initial user
+                'name' => 'Johan Nordström',
+                'email' => 'jn@thehiveresistance.com',
+                'password' => Hash::make('password'),
+        ]);
+        }
     }
 }

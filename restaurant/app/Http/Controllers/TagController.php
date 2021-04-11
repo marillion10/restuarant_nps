@@ -98,7 +98,7 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this category.');
+        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to edit this tag.');
 
 		if (!$request->filled('name')) {
 			return redirect()->back()->with('warning', 'Please enter a name for the category.');
@@ -108,7 +108,7 @@ class TagController extends Controller
 			'name' => $request->input('name'),
 		]);
 
-		return redirect()->route('tags.show', ['tag' => $tag])->with('success', 'category updated.');
+		return redirect()->route('tags.index', ['tag' => $tag])->with('success', 'category updated.');
     }
 
     /**
@@ -119,8 +119,9 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this category.');
+      abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this tag.');
 
+    $tag->restaurants()->sync([]);
 		$tag->delete();
 
 		return redirect()->route('tags.index')->with('success', 'tag has been deleted');

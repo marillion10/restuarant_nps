@@ -60,6 +60,15 @@
 					<li class="list-inline-item">Beskrivning: {{ $suggestion->description }} <li>
 				</ul>
 			</div>
+
+            <form action="{{ route('suggestions.destroy', ['suggestion' => $suggestion]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger">Ta bort förslag</button>
+            </form>
+        </div>
+
 	</article>
 			
 

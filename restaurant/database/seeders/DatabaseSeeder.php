@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
 			RestaurantSeeder::class,
 			TagSeeder::class,
             LinktypeSeeder::class,
+            LinkSeeder::class,
+            SuggestionSeeder::class,
 		]);
 
 		// \App\Models\User::factory(10)->create();

@@ -56,5 +56,47 @@ class RestaurantSeeder extends Seeder
         ]);
         }
 
+        if (Restaurant::where('name', 'Rådhuskällaren')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Rådhuskällaren',
+                'description' => 'En av Malmös äldsta restauranger. ',
+                'address' => 'Kompanigatan 5',
+                'tel' => '040-22 43 55',
+
+                'admin_id' => '1',
+                'city_id' => '1',
+        ]);
+        }
+
+        if (Restaurant::where('name', 'Lisebergs Pizza Hut')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Lisebergs Pizza Hut',
+                'description' => 'Välkommen till pizzahut inne på vårt nöjesfält liseberg. ',
+                'address' => 'lisebergsgatan 3',
+                'tel' => '031-91 11 30',
+
+                'admin_id' => '1',
+                'city_id' => '2',
+        ]);
+        }
+
+        if (Restaurant::where('name', 'Restaurang Dramaten')->doesntExist()) {
+
+            Restaurant::create( [
+        // Create initial user
+                'name' => 'Restaurang Dramaten',
+                'description' => 'Magnifik utsikt över nybroviken. ',
+                'address' => 'Nybroplan ',
+                'tel' => '08-99 88 77',
+
+                'admin_id' => '1',
+                'city_id' => '3',
+        ]);
+        }
+
     }
 }
