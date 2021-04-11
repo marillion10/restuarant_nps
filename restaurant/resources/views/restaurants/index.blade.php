@@ -9,6 +9,7 @@
 				<h5 class="card-title h5"><a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->name }}</a></h5>
 				<div class="metadata">
 					<ul class="list-inline">
+						<li class="list-inline-item">Skapad: {{$restaurant->created_at}} </li>
 						<li class="list-inline-item">Adress: {{$restaurant->address}} </li>
 						<li class="list-inline-item">Telefon: {{$restaurant->tel}} </li>
 						<li class="list-inline-item">

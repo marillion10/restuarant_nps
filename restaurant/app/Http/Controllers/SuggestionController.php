@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Suggestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class SuggestionController extends Controller
@@ -98,6 +99,11 @@ class SuggestionController extends Controller
      */
     public function destroy(Suggestion $suggestion)
     {
-        //
+        abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete this city.');
+        
+        $suggestion->delete();
+
+
+		return redirect()->back()->with('success', 'Suggestion has been deleted');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
 {
-    protected static $tags = ['Kött','Fisk', 'Pasta'];
+    protected static $tags = ['Sushi','Fisk', 'Pasta', 'Pizza', 'A la carté', 'Falafel'];
     /**
      * Run the database seeds.
      *
