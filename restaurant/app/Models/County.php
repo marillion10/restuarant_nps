@@ -28,4 +28,14 @@ class County extends Model
     public function cities() {
         return $this->hasMany(City::class);
     }
+
+	public static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->cities()->delete();
+             // do the rest of the cleanup...
+        });
+    }
+
 	}

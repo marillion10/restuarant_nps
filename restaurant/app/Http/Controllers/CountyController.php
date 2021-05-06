@@ -119,7 +119,7 @@ class CountyController extends Controller
     public function destroy(County $county)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in as an admin to delete this county.');
-
+        
 		$county->delete();
 
 		return redirect()->route('counties.index')->with('success', 'County has been deleted');
