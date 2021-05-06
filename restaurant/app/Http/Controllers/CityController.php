@@ -87,7 +87,7 @@ class CityController extends Controller
     public function show(City $city)
     {
         return view('cities/show', ['city' => $city, 'tags' => Tag::orderby('name')->get()]);
-
+        
     }
 
     /**
