@@ -36,4 +36,13 @@ class City extends Model
 		return $this->belongsTo(County::class);
 	}
 
+	public static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->restaurants()->delete();
+             // do the rest of the cleanup...
+        });
+    }
+
 }

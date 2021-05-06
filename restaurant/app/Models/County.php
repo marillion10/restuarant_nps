@@ -29,12 +29,16 @@ class County extends Model
         return $this->hasMany(City::class);
     }
 
-	public static function boot() {
+	public  static function boot() {
         parent::boot();
 
-        static::deleting(function($user) { // before delete() method call this
-             $user->cities()->delete();
-             // do the rest of the cleanup...
+        static::deleting(function($county) {
+            //remove related rows region and city
+            $county->cities()->each(function($cities) {
+                $cities->restaurants()->delete();
+            });
+            $county->cities()->delete();//
+            return true;
         });
     }
 

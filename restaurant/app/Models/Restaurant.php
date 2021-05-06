@@ -42,4 +42,13 @@ class Restaurant extends Model
     public function links() {
 		return $this->hasMany(Link::class);
 	}
+
+	public static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->cities()->delete();
+             // do the rest of the cleanup...
+        });
+    }
 }
