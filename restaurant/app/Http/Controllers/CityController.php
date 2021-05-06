@@ -134,7 +134,7 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         abort_unless(Auth::check(), 401, 'You have to be logged in as the admin to delete this city.');
-
+        
 		$city->delete();
 
 		return redirect()->route('cities.index')->with('success', 'City has been deleted');
