@@ -49,14 +49,13 @@ class LinkController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a link.');
 		}
 
-        $validator = Validator::make($request->all(), [
-            'desc' => 'unique:links'
+        if (!$request->filled('url')) {
+			return redirect()->back()->with('warning', 'Please enter a url.');
+		}
 
-          ]);
-
-          if ($validator->fails()) {
-            return redirect()->back()->with('warning', 'Link already exists choose another name');
-          }
+        if (!$request->filled('linktype_id')) {
+			return redirect()->back()->with('warning', 'Please enter a linktype.');
+		}
 
 		$link = Link::create([
 			'desc' => $request->input('desc'),

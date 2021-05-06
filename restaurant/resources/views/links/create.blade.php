@@ -13,7 +13,7 @@
 
 				<div class="mb-3">
 					<label for="desc" class="form-label">Länk beskrivning</label>
-                    <input type="desc" id="desc" name="desc" class="form-control" placeholder="Skriv in desc" >
+                    <input type="desc" id="desc" name="desc" class="form-control" placeholder="Skriv in desc">
                     <label for="name" class="form-label">URL</label>
 					<input type="url" id="url" name="url" class="form-control" placeholder="Skriv in länk" >
 
