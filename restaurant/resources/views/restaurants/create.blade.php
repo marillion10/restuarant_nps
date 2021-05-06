@@ -16,17 +16,17 @@
 
 				<div class="mb-3 ps-4 pe-4">
 					<label for="address" class="form-label">Adress</label>
-					<textarea id="address" name="address" class="form-control"></textarea>
+					<input id="address" name="address" class="form-control" required>
 				</div>
 
                 <div class="mb-3 ps-4 pe-4">
 					<label for="tel" class="form-label">Telefon</label>
-					<textarea id="tel" name="tel" class="form-control"></textarea>
+					<input id="tel" name="tel" class="form-control" required>
 				</div>
 
 				<div class="mb-3 ps-4 pe-4">
 					<label for="description" class="form-label">Besrivning</label>
-					<textarea id="description" name="description" class="form-control" rows="10"></textarea>
+					<textarea id="description" name="description" class="form-control" rows="10" required></textarea>
 				</div>
 
                 <fieldset class="mb-3 ps-4 pe-4">

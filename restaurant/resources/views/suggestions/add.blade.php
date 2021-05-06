@@ -17,20 +17,20 @@
 
             <div class="mb-3 ps-4 pe-4">
                 <label for="address" class="form-label">Adress</label>
-                <textarea id="address" name="address" class="form-control"
-                    placeholder="Skriv adressen till restaurangen"></textarea>
+                <input id="address" name="address" class="form-control"
+                    placeholder="Skriv adressen till restaurangen" required>
             </div>
 
             <div class="mb-3 ps-4 pe-4">
                 <label for="tel" class="form-label">Telefon</label>
-                <textarea id="tel" name="tel" class="form-control"
-                    placeholder="Skriv telefon-nummer till restaurangen"></textarea>
+                <input id="tel" name="tel" class="form-control"
+                    placeholder="Skriv telefon-nummer till restaurangen" required>
             </div>
 
             <div class="mb-3 ps-4 pe-4">
                 <label for="description" class="form-label">Besrivning</label>
                 <textarea id="description" name="description" class="form-control" placeholder="Beskriv restaurangen"
-                    rows="10"></textarea>
+                    rows="10" required></textarea>
             </div>
 
             <div class="text-center pe-3 ps-3"><button type="submit" class="mb-3 btn btn-secondary w-100 ">Skicka</button></div>

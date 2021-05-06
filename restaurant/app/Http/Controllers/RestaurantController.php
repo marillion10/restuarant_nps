@@ -50,6 +50,18 @@ class RestaurantController extends Controller
 			return redirect()->back()->with('warning', 'Please enter a name for the restaurant.');
 		}
 
+        if (!$request->filled('address')) {
+			return redirect()->back()->with('warning', 'Please enter a address for the restaurant.');
+		}
+
+        if (!$request->filled('tel')) {
+			return redirect()->back()->with('warning', 'Please enter a tel for the restaurant.');
+		}
+
+        if (!$request->filled('description')) {
+			return redirect()->back()->with('warning', 'Please enter a description for the restaurant.');
+		}
+
 		$restaurant = Auth::user()->restaurants()->create([
 			'name' => $request->input('name'),
 			'address' => $request->input('address'),
