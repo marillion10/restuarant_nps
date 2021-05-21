@@ -47,7 +47,7 @@ class Restaurant extends Model
         parent::boot();
 
         static::deleting(function($user) { // before delete() method call this
-             $user->cities()->delete();
+             $user->links()->delete();
              // do the rest of the cleanup...
         });
     }
